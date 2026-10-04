@@ -1,6 +1,6 @@
 // Only noindex on the personal Vercel deployment, not on the official domain
 const isVercelPersonalDeploy =
-  String(process.env.NEXT_PUBLIC_BASE_URL).includes("vercel.app");
+  String(process.env.NEXT_PUBLIC_BASE_URL || "").includes("vercel.app");
 
 const noIndexIfVercel = isVercelPersonalDeploy
   ? { robots: { index: false, follow: false } }
@@ -39,7 +39,7 @@ const root = {
   publisher: "QuestIT - VES Institute of Technology",
   applicationName: "QuestIT VESIT",
   title: "QuestIT VESIT | Official IT Cell of VES Institute of Technology Mumbai",
-  metadataBase: new URL(String(process.env.NEXT_PUBLIC_BASE_URL)),
+  metadataBase: new URL("https://questit.vesit.ves.ac.in"),
   authors: [
     { name: "Jay Kerkar", url: "https://github.com/jaykerkar0405" },
     { name: "Anish Tawade", url: "https://github.com/Anissh280507" },
@@ -115,7 +115,7 @@ const team = {
   publisher: "QuestIT",
   applicationName: "QuestIT",
   title: "Team | QuestIT | The Pulse of IT at VESIT",
-  metadataBase: new URL(String(process.env.NEXT_PUBLIC_BASE_URL)),
+  metadataBase: new URL("https://questit.vesit.ves.ac.in"),
   authors: [
     { name: "Jay Kerkar", url: "https://github.com/jaykerkar0405" },
     { name: "Anish Tawade", url: "https://github.com/Anissh280507" },
@@ -178,7 +178,7 @@ const events = {
   publisher: "QuestIT",
   applicationName: "QuestIT",
   title: "Events | QuestIT | The Pulse of IT at VESIT",
-  metadataBase: new URL(String(process.env.NEXT_PUBLIC_BASE_URL)),
+  metadataBase: new URL("https://questit.vesit.ves.ac.in"),
   authors: [
     { name: "Jay Kerkar", url: "https://github.com/jaykerkar0405" },
     { name: "Anish Tawade", url: "https://github.com/Anissh280507" },
@@ -241,7 +241,7 @@ const developers = {
   publisher: "QuestIT",
   applicationName: "QuestIT",
   title: "Developers | QuestIT | The Pulse of IT at VESIT",
-  metadataBase: new URL(String(process.env.NEXT_PUBLIC_BASE_URL)),
+  metadataBase: new URL("https://questit.vesit.ves.ac.in"),
   authors: [
     { name: "Jay Kerkar", url: "https://github.com/jaykerkar0405" },
     { name: "Anish Tawade", url: "https://github.com/Anissh280507" },
@@ -304,7 +304,7 @@ const registration = {
   publisher: "QuestIT",
   applicationName: "QuestIT",
   title: "Registration | QuestIT | The Pulse of IT at VESIT",
-  metadataBase: new URL(String(process.env.NEXT_PUBLIC_BASE_URL)),
+  metadataBase: new URL("https://questit.vesit.ves.ac.in"),
   authors: [
     { name: "Jay Kerkar", url: "https://github.com/jaykerkar0405" },
     { name: "Anish Tawade", url: "https://github.com/Anissh280507" },
@@ -358,7 +358,7 @@ const feedback = {
   publisher: "QuestIT",
   applicationName: "QuestIT",
   title: "Feedback | QuestIT | The Pulse of IT at VESIT",
-  metadataBase: new URL(String(process.env.NEXT_PUBLIC_BASE_URL)),
+  metadataBase: new URL("https://questit.vesit.ves.ac.in"),
   authors: [
     { name: "Jay Kerkar", url: "https://github.com/jaykerkar0405" },
     { name: "Anish Tawade", url: "https://github.com/Anissh280507" },

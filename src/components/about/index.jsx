@@ -29,14 +29,9 @@ const About = () => {
         className="bg-neutral-900 rounded-xl p-7 w-full max-w-none mx-auto"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-none mx-auto gap-6 my-6">
-        <div className="bg-neutral-900 rounded-xl py-2">
-          <MembersSplitChart />
-        </div>
-
-        <div className="bg-neutral-900 rounded-xl py-2">
-          <EventsSplitChart />
-        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-full max-w-none mx-auto gap-6 my-6">
+        <EventsSplitChart />
+        <MembersSplitChart />
       </div>
     </div>
   );
