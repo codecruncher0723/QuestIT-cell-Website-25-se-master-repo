@@ -15,6 +15,8 @@ import {
 import { FlipWords } from "@/components/ui/flip-words";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { Icon, EvervaultCard } from "@/components/ui/evervault-card";
+import { PolaroidClothesline } from "@/components/polaroid-clothesline";
+import { FilmStrip } from "@/components/film-strip";
 
 // App's External Imports
 import { motion, MotionConfig } from "framer-motion";
@@ -120,6 +122,11 @@ const Team = () => {
                         <AccordionTrigger className="team-sub-accordion-trigger">{subTitle}</AccordionTrigger>
 
                         <AccordionContent className="py-8 relative z-10">
+                          {value === CURRENT_COUNCIL && subValue === "BE Members" ? (
+                            <PolaroidClothesline members={subMembers} />
+                          ) : value === CURRENT_COUNCIL && subValue === "TE Members" ? (
+                            <FilmStrip members={subMembers} label={subTitle} />
+                          ) : (
                           <div className="flex flex-wrap justify-center gap-10 w-full max-w-none mx-auto team-card-container-mobile">
                             {subMembers
                               .sort((a, b) => a.name.localeCompare(b.name))
@@ -184,6 +191,7 @@ const Team = () => {
                                 )
                               )}
                           </div>
+                          )}
                         </AccordionContent>
                       </AccordionItem>
                     ))}
