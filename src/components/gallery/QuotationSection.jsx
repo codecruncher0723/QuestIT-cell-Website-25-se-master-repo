@@ -34,7 +34,7 @@ const QuotationSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[80vh] w-full flex items-center justify-center bg-gradient-to-b from-black via-zinc-950 to-black py-20 px-4"
+      className="relative min-h-[35vh] md:min-h-[45vh] w-full flex items-center justify-center bg-gradient-to-b from-[#02060f] via-zinc-950 to-black py-10 md:py-16 px-4"
     >
       <div className="max-w-4xl mx-auto text-center">
         <motion.blockquote

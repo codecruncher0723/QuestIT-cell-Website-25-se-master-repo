@@ -23,8 +23,8 @@ const PROJECTOR_IMAGES = [
 
 /* ─── Constants & Configuration ────────────────────────────────────────────── */
 const TOTAL = PROJECTOR_IMAGES.length;
-const PAUSE_MS = 2400;
-const TRANSITION_DURATION = 1.6;
+const PAUSE_MS = 2150;
+const TRANSITION_DURATION = 1.35;
 const TRANSITION_EASE = [0.35, 0, 0.25, 1];
 
 /* ─── Intro Animation Stages ────────────────────────────────────────────────

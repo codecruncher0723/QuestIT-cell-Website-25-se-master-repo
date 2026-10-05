@@ -12,22 +12,29 @@ import {
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PhotoLightboxModal from "./PhotoLightboxModal";
 
+/* ─── Orbital Memories Exhibition Images ───────────────────────────────────── */
+const ORBITAL_IMAGES = [
+  "/images/gallery-images/Orbital/diagonal_12.jpg",
+  "/images/gallery-images/Orbital/diagonal_7.jpeg",
+  "/images/gallery-images/Orbital/diagonal_9.png",
+  "/images/gallery-images/Orbital/dinner-photo_1920x1080.png",
+  "/images/gallery-images/Orbital/download_1920x1080.png",
+  "/images/gallery-images/Orbital/firstmeet_1920x1080.png",
+  "/images/gallery-images/Orbital/IMG_1633_1920x1080.png",
+  "/images/gallery-images/Orbital/IMG_2522_1920x1080.png",
+  "/images/gallery-images/Orbital/IMG_2829_1920x1080.png",
+  "/images/gallery-images/Orbital/IMG_3955_1920x1080.png",
+  "/images/gallery-images/Orbital/rshb-vwq_1920x1080.png",
+  "/images/gallery-images/Orbital/shivam-bw1_1920x1080.png",
+  "/images/gallery-images/Orbital/table-2_1920x1080.png",
+];
+
 const INITIAL_OFFSET_INDEX = 2;
-const TOTAL_CARDS = 15;
+const TOTAL_CARDS = ORBITAL_IMAGES.length;
 const PAUSE_MS = 2500;
 const ROTATION_DURATION = 1.4;
 
 const mod = (n, m) => ((n % m) + m) % m;
-
-const getImageExtension = (index) => {
-  // diagonal_4, 11, 12: jpg
-  // diagonal_9, 13, 14, 15: png
-  // diagonal_1, 2, 3, 5, 6, 7, 8, 10: jpeg
-  const jpgIndices = [4, 11, 12];
-  const pngIndices = [9, 13, 14, 15];
-  if (pngIndices.includes(index)) return "png";
-  return jpgIndices.includes(index) ? "jpg" : "jpeg";
-};
 
 // Sub-component for each 3D Memory Card with single flip, elevation, and size transitions
 const MemoryCard = ({
@@ -585,7 +592,7 @@ const MemoriesSection = () => {
 
       return {
         index: i,
-        src: `/images/gallery-images/diagonal_images/diagonal_${i + 1}.${getImageExtension(i + 1)}`,
+        src: ORBITAL_IMAGES[i % TOTAL_CARDS],
         x,
         y,
         z,
@@ -617,14 +624,14 @@ const MemoriesSection = () => {
     <section
       ref={sectionRef}
       className={`relative w-full bg-black overflow-hidden flex flex-col items-center justify-center select-none ${
-        isMobile ? "py-6 min-h-0" : "py-10 min-h-screen justify-between"
+        isMobile ? "py-4 min-h-0" : "py-6 md:py-8 min-h-[80vh] justify-between"
       }`}
       style={
         isMobile
           ? undefined
           : {
-              height: "100dvh",
-              minHeight: "650px",
+              height: "min(95dvh, 800px)",
+              minHeight: "560px",
             }
       }
     >
