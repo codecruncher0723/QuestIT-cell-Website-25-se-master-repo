@@ -16,6 +16,8 @@ const ROPE_TOP = 14;
 const ROPE_SAG = 34;
 
 // Spotlight timing (ms)
+// Counted from opening the dropdown, which itself takes ~0.5s to slide open and scroll into view
+const FIRST_MOVE_AFTER = 1500;
 const SPOTLIGHT_EVERY = 3000;
 const RESUME_AFTER = 4000;
 
@@ -41,6 +43,7 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
   const card_refs = useRef([]);
   const line_refs = useRef([]);
   const resume_timer = useRef(null);
+  const has_moved = useRef(false);
   const [active, setActive] = useState(0);
   const [interacting, setInteracting] = useState(false);
   const reduce_motion = useReducedMotion();
@@ -101,19 +104,49 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
     track.scrollTo({ left, behavior: reduce_motion ? "auto" : "smooth" });
   }, [active, reduce_motion, row_count]);
 
-  // Move the spotlight to the next column every few seconds
+  // Move the spotlight to the next column every few seconds (sooner the first time, right after opening)
   useEffect(() => {
     if (paused || column_count < 2) return;
 
-    const timer = setInterval(() => {
-      if (document.hidden) return;
-      setActive((current) => (current + 1) % column_count);
-    }, SPOTLIGHT_EVERY);
+    let timer;
+    const schedule = (delay) => {
+      timer = setTimeout(() => {
+        // Wait while the tab is in the background, then carry on
+        if (document.hidden) return schedule(SPOTLIGHT_EVERY);
+        has_moved.current = true;
+        setActive((current) => (current + 1) % column_count);
+      }, delay);
+    };
 
-    return () => clearInterval(timer);
-  }, [paused, column_count]);
+    schedule(has_moved.current ? SPOTLIGHT_EVERY : FIRST_MOVE_AFTER);
+    return () => clearTimeout(timer);
+  }, [active, paused, column_count]);
 
   useEffect(() => () => clearTimeout(resume_timer.current), []);
+
+  // Tall two-row strips scroll under the sticky menu bar, so hide the bar on scroll down while open
+  useEffect(() => {
+    if (row_count < 2) return;
+
+    const body = document.body;
+    let last_y = window.scrollY;
+
+    const on_scroll = () => {
+      const y = window.scrollY;
+      if (y > last_y + 4 && y > 150) body.dataset.menuHidden = "true";
+      else if (y < last_y - 4) delete body.dataset.menuHidden;
+      last_y = y;
+    };
+
+    body.dataset.clotheslineOpen = "true";
+    window.addEventListener("scroll", on_scroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", on_scroll);
+      delete body.dataset.clotheslineOpen;
+      delete body.dataset.menuHidden;
+    };
+  }, [row_count]);
 
   // The column closest to the middle of the strip
   const nearest_to_center = () => {
@@ -363,8 +396,10 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
               .map(({ name }) => name)
               .join(" and ")}`}
             onClick={() => go_to(column)}
-            className={`h-1.5 rounded-full transition-all ${
-              column === active ? "w-6 bg-[#ffe9a8] sm:w-8" : "w-2.5 bg-white/30 hover:bg-white/50 sm:w-4"
+            className={`h-1.5 w-4 rounded-full transition-colors duration-500 sm:w-6 ${
+              column === active
+                ? "bg-[#ffe9a8] shadow-[0_0_8px_2px_rgba(255,224,130,0.6)]"
+                : "bg-white/25 hover:bg-white/50"
             }`}
           />
         ))}

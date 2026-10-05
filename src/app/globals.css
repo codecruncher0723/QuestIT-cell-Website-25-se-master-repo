@@ -175,3 +175,12 @@
     --destructive-foreground: 0 0% 98%;
   }
 }
+/* While a two-row polaroid clothesline is open, the menu bar slides away on scroll down
+   and comes back on scroll up, so its blur doesn't cover the photos (set by PolaroidClothesline) */
+body[data-clothesline-open] header {
+  transition: transform 0.3s ease;
+}
+
+body[data-clothesline-open][data-menu-hidden] header {
+  transform: translateY(-100%);
+}
