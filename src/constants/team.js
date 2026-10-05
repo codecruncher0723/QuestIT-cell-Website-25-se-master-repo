@@ -153,7 +153,7 @@ const team = [
             email: "2024.harshika.karamchandani@ves.ac.in",
             github: "https://github.com/QuestIT-Cell",
             linkedin: "https://www.linkedin.com/in/harshika-karamchandani-370643417",
-            image: "/images/team2026/teMembers/PavanWadhwa.jpg",
+            image: "/images/team2026/teMembers/HarshikaKaramchandani.jpg",
           },
           {
             name: "Japleen Kaur Arora",
@@ -343,7 +343,7 @@ const team = [
             email: "2025.karmanya.jakhotia@ves.ac.in",
             github: "https://github.com/Karmanya-Jakhotia",
             linkedin: "https://www.linkedin.com/in/karmanya-jakhotia-9b1420385",
-            image: "/images/team2026/seMembers/KarmanyaJakhotia.png",
+            image: "/images/team2026/seMembers/KarmanyaJakhotia.jpg",
           },
           {
             name: "Karthik Kotian",
