@@ -667,6 +667,36 @@ const MemoriesSection = () => {
             marginInline: "auto",
           }}
         >
+          {/* Central Background Quest Logo Watermark & Ambient Radial Cyan Glow */}
+          <div
+            aria-hidden="true"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none flex items-center justify-center"
+            style={{
+              transform: "translate3d(-50%, -50%, -20px)",
+              zIndex: 0,
+            }}
+          >
+            {/* Ambient Cyan Backlight Glow */}
+            <div
+              className="absolute w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] md:w-[480px] md:h-[380px] rounded-full blur-[45px] md:blur-[75px] pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(0, 212, 255, 0.22) 0%, rgba(34, 211, 238, 0.08) 50%, transparent 75%)",
+              }}
+            />
+
+            {/* Glowing Quest Logo */}
+            <div className="relative w-[180px] h-[75px] sm:w-[250px] sm:h-[105px] md:w-[400px] md:h-[160px] lg:w-[480px] lg:h-[190px] opacity-25 md:opacity-30">
+              <Image
+                src="/images/logo.png"
+                alt=""
+                fill
+                className="object-contain filter drop-shadow-[0_0_25px_rgba(0,212,255,0.45)]"
+                priority
+              />
+            </div>
+          </div>
+
           {/* Active 3D Orbital Memory Photograph Cards */}
           {cards.map((card) => {
             if (!card.isVisible) return null;
