@@ -1,5 +1,26 @@
 const events = [
   {
+    date: "August – September 2026",
+    title: "SIH Insider",
+    speakers: [
+      {
+        id: 1,
+        name: "Shravani Rasam",
+        designation: "2x SIH Winner | Team Coding Gurus",
+        image: "/images/speaker_photos/sih_insider/shravani_rasam.png",
+      },
+      {
+        id: 2,
+        name: "Pranav Pol",
+        designation: "2x SIH Winner | Team Coding Gurus",
+        image: "/images/speaker_photos/sih_insider/pranav_pol.jpg",
+      },
+    ],
+    image: "/images/workshop_thumbnails/sih_insider_2026.png",
+    description:
+      "QuestIT Cell conducted SIH Insider – Your Roadmap to Hackathon Success! to help students prepare effectively for Smart India Hackathon 2026. Featuring Shravani Rasam and Pranav Pol from Team Coding Gurus, the sessions shared firsthand hackathon experience along with practical strategies for selecting problem statements, researching solutions, building working prototypes, creating impactful PPTs, managing teams, and confidently pitching before judges. The second phase focused on SIH Phase 2 preparation, covering research, final presentations, prototype demonstrations, videos, and submission requirements. The sessions gave students a clear roadmap from hackathon preparation to final submission while helping them approach SIH with greater confidence and focus.",
+  },
+  {
     date: "August 2026",
     title: "Vibe W Quest",
     speakers: [
