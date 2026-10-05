@@ -13,7 +13,6 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { FlipWords } from "@/components/ui/flip-words";
-import { LinkPreview } from "@/components/ui/link-preview";
 import { Icon, EvervaultCard } from "@/components/ui/evervault-card";
 import { PolaroidClothesline } from "@/components/polaroid-clothesline";
 
@@ -155,34 +154,38 @@ const Team = () => {
                                       {name}
                                     </h2>
 
-                                    <p className="text-sm absolute right-[1.75rem] border font-light border-white/[0.2] rounded-full mt-4 text-white px-2 py-1 team-designation-mobile">
+                                    <p className={`${value === CURRENT_COUNCIL ? "text-base team-designation-current" : "text-sm"} absolute right-[1.75rem] border font-light border-white/[0.2] rounded-full mt-4 text-white px-2 py-1 team-designation-mobile`}>
                                       {designation}
                                     </p>
 
-                                    <div className="mt-4 flex gap-2">
+                                    <div className="mt-4 flex items-center divide-x divide-white/20">
                                       <Link
                                         aria-label="Email"
                                         href={`mailto:${email}`}
-                                        className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                        className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                       >
-                                        <Mail className="h-4 w-4 transition text-white" />
+                                        <Mail className="size-[22px]" />
                                       </Link>
 
-                                      <LinkPreview
-                                        url={github}
+                                      <a
+                                        href={github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         aria-label="GitHub"
-                                        className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                        className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                       >
-                                        <Github className="h-4 w-4 transition text-white" />
-                                      </LinkPreview>
+                                        <Github className="size-[22px]" />
+                                      </a>
 
-                                      <LinkPreview
-                                        url={linkedin}
+                                      <a
+                                        href={linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         aria-label="LinkedIn"
-                                        className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                        className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                       >
-                                        <Linkedin className="h-4 w-4 transition text-white" />
-                                      </LinkPreview>
+                                        <Linkedin className="size-[22px]" />
+                                      </a>
                                     </div>
                                   </motion.div>
                                 )
@@ -234,32 +237,36 @@ const Team = () => {
                                 {designation}
                               </p>
 
-                              <div className="mt-4 flex gap-2">
+                              <div className="mt-4 flex items-center divide-x divide-white/20">
                                 <Link
                                   aria-label="Email"
                                   href={`mailto:${email}`}
-                                  className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                  className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                 >
-                                  <Mail className="h-4 w-4 transition text-white" />
+                                  <Mail className="size-[22px]" />
                                 </Link>
 
                                 {value != "Faculty In-Charges" && (
-                                  <LinkPreview
-                                    url={github}
+                                  <a
+                                    href={github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     aria-label="GitHub"
-                                    className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                    className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                   >
-                                    <Github className="h-4 w-4 transition text-white" />
-                                  </LinkPreview>
+                                    <Github className="size-[22px]" />
+                                  </a>
                                 )}
 
-                                <LinkPreview
-                                  url={linkedin}
+                                <a
+                                  href={linkedin}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                   aria-label="LinkedIn"
-                                  className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                  className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                 >
-                                  <Linkedin className="h-4 w-4 transition text-white" />
-                                </LinkPreview>
+                                  <Linkedin className="size-[22px]" />
+                                </a>
                               </div>
                             </div>
                           )
