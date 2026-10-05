@@ -592,11 +592,12 @@ const DeveloperEditorialSection = () => {
           {/* ── RIGHT COLUMN: Website Work & Contribution ── */}
           <div className="relative flex flex-col justify-center w-full">
             {/* Visual Anchor: Cyan Horizontal Line & WORKED ON WEBSITE Label (Static) */}
-            <div className="flex items-center gap-2.5 lg:gap-3">
+            <div className="flex items-center justify-center gap-2.5 lg:gap-3 mx-auto">
               <span className="w-6 lg:w-8 h-[2px] bg-[#22d3ee] inline-block" />
               <span className="font-mono text-xs lg:text-sm tracking-[0.25em] text-[#22d3ee] font-semibold uppercase">
                 WORKED ON WEBSITE
               </span>
+              <span className="w-6 lg:w-8 h-[2px] bg-[#22d3ee] inline-block" />
             </div>
 
             {/* Masked Vertical Reveal Window */}
@@ -626,15 +627,15 @@ const DeveloperEditorialSection = () => {
                     y: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
                     opacity: { duration: 0.5, ease: "easeInOut" },
                   }}
-                  className="absolute inset-0 w-full flex flex-col items-start text-left justify-start select-none"
+                  className="absolute inset-0 w-full flex flex-col items-center text-center justify-start select-none px-4"
                 >
                   {/* Contribution Title */}
-                  <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-snug">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-snug text-center mx-auto">
                     {workTitle}
                   </h2>
 
                   {/* Authentic Description */}
-                  <p className="mt-3 lg:mt-4 text-xs md:text-sm lg:text-base xl:text-lg text-neutral-300 leading-relaxed max-w-sm lg:max-w-md line-clamp-4 lg:line-clamp-none">
+                  <p className="mt-3 lg:mt-4 text-xs md:text-sm lg:text-base xl:text-lg text-neutral-300 leading-relaxed max-w-sm lg:max-w-md line-clamp-4 lg:line-clamp-none text-center mx-auto">
                     {currentDev.description}
                   </p>
                 </motion.div>

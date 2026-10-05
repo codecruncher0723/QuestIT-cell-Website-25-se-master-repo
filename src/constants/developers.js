@@ -91,8 +91,30 @@ const developers = [
       "https://www.linkedin.com/in/sarra-khadse-0b7719386?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     image: "/images/dev_images/sarra_khadse.png",
     description:
-      " Updated the website with the latest statistics, redesigned the Event Split section with an improved visualization and refined styling, and worked on the Member Split section to enhance its presentation and consistency with the overall website UI.",
+      "Updated the website with the latest statistics, redesigned the Event Split section with an improved visualization and refined styling, and worked on the Member Split section to enhance its presentation and consistency with the overall website UI.",
+  },
+  {
+    name: "Sankalp Mane",
+    role: "Frontend Developer",
+    email: "2025.sankalp.mane@ves.ac.in",
+    github: "https://github.com/Sankymane",
+    linkedin:
+      "https://www.linkedin.com/in/sankalp-mane-53175936b?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    image: "/images/dev_images/sankalp_mane.jpg",
+    description:
+      "Developed and integrated the SIH Insider tab/banner page within the events section of the website, featuring detailed event and speaker information alongside custom visual asset creation for the web tab.",
+  },
+  {
+    name: "Manish Awari",
+    role: "Frontend Developer",
+    email: "2025.manish.awari@ves.ac.in",
+    github: "https://github.com/themanishawari",
+    linkedin: "https://www.linkedin.com/in/manishawari/",
+    image: "/images/dev_images/manish_awari.jpg",
+    description:
+      "Created advertisement banner for genesis 2.0 linking Quest website to genesis website",
   },
 ];
 
 export default developers;
+
