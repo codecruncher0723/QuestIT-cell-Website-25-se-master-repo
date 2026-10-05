@@ -25,6 +25,9 @@ const BULBS_PER_CARD = 4;
 // How far the rope reaches past the first and last polaroid (px, matches -inset-x-12)
 const ROPE_OVERHANG = 48;
 
+// Groups bigger than this hang on two ropes that scroll together
+const TWO_ROWS_FROM = 10;
+
 const rope_y = (t) => ROPE_TOP + 4 * ROPE_SAG * t * (1 - t);
 
 // Horizontal centre of a polaroid, measured from the visible left edge of the strip
@@ -36,7 +39,7 @@ const center_in_track = (track, card) => {
 const PolaroidClothesline = ({ members, title, subtitle }) => {
   const track_ref = useRef(null);
   const card_refs = useRef([]);
-  const line_ref = useRef(null);
+  const line_refs = useRef([]);
   const resume_timer = useRef(null);
   const [active, setActive] = useState(0);
   const [interacting, setInteracting] = useState(false);
@@ -45,6 +48,16 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
   const sorted = [...members].sort((a, b) => a.name.localeCompare(b.name));
   const total = sorted.length;
 
+  // Fill column by column (top, bottom, top, ...) so the spotlight zig-zags left to right
+  const row_count = total > TWO_ROWS_FROM ? 2 : 1;
+  const rows = Array.from({ length: row_count }, (_, row) =>
+    sorted.map((_, index) => index).filter((index) => index % row_count === row)
+  );
+
+  // The spotlight lights a whole column (top and bottom polaroid together)
+  const column_count = Math.ceil(total / row_count);
+  const column_of = (index) => Math.floor(index / row_count);
+
   // Where each polaroid's centre falls along the rope (0 = left end, 1 = right end)
   const [rope_positions, setRopePositions] = useState(() =>
     sorted.map((_, index) => (index + 0.5) / sorted.length)
@@ -52,16 +65,17 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
 
   // Measure the real layout so every pin hangs exactly on the sagging rope
   useLayoutEffect(() => {
-    const line = line_ref.current;
-    if (!line) return;
+    const lines = line_refs.current.filter(Boolean);
+    if (!lines.length) return;
 
     const measure = () => {
-      const rope_width = line.offsetWidth + 2 * ROPE_OVERHANG;
-      if (!line.offsetWidth) return;
+      if (!lines[0].offsetWidth) return;
 
-      const positions = card_refs.current.map((card) =>
-        card ? (card.offsetLeft + card.offsetWidth / 2 + ROPE_OVERHANG) / rope_width : 0.5
-      );
+      const positions = card_refs.current.map((card) => {
+        if (!card) return 0.5;
+        const rope_width = card.offsetParent.offsetWidth + 2 * ROPE_OVERHANG;
+        return (card.offsetLeft + card.offsetWidth / 2 + ROPE_OVERHANG) / rope_width;
+      });
       setRopePositions((previous) =>
         previous.length === positions.length && previous.every((value, index) => Math.abs(value - positions[index]) < 0.001)
           ? previous
@@ -71,37 +85,37 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
 
     measure();
     const resize_observer = new ResizeObserver(measure);
-    resize_observer.observe(line);
+    lines.forEach((line) => resize_observer.observe(line));
     return () => resize_observer.disconnect();
-  }, [total]);
+  }, [total, row_count]);
   const paused = interacting || reduce_motion;
 
-  // Slide the strip so the active polaroid sits in the middle
+  // Slide the strip so the active column sits in the middle
   useEffect(() => {
     const track = track_ref.current;
-    const card = card_refs.current[active];
+    const card = card_refs.current[active * row_count];
     if (!track || !card || !track.clientWidth) return;
 
-    // The first polaroid shows next to the title, the rest are centred
+    // The first column shows next to the title, the rest are centred
     const left = active === 0 ? 0 : track.scrollLeft + center_in_track(track, card) - track.clientWidth / 2;
     track.scrollTo({ left, behavior: reduce_motion ? "auto" : "smooth" });
-  }, [active, reduce_motion]);
+  }, [active, reduce_motion, row_count]);
 
-  // Move the spotlight to the next polaroid every few seconds
+  // Move the spotlight to the next column every few seconds
   useEffect(() => {
-    if (paused || total < 2) return;
+    if (paused || column_count < 2) return;
 
     const timer = setInterval(() => {
       if (document.hidden) return;
-      setActive((current) => (current + 1) % total);
+      setActive((current) => (current + 1) % column_count);
     }, SPOTLIGHT_EVERY);
 
     return () => clearInterval(timer);
-  }, [paused, total]);
+  }, [paused, column_count]);
 
   useEffect(() => () => clearTimeout(resume_timer.current), []);
 
-  // The polaroid closest to the middle of the strip
+  // The column closest to the middle of the strip
   const nearest_to_center = () => {
     const track = track_ref.current;
     if (!track) return active;
@@ -117,7 +131,7 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
         nearest_distance = distance;
       }
     });
-    return nearest;
+    return Math.floor(nearest / row_count);
   };
 
   // Stop the autoplay while someone swipes or scrolls, then pick up from where they left it
@@ -131,57 +145,18 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const go_to = (index) => {
-    setActive((index + total) % total);
+  const go_to = (column) => {
+    setActive((column + column_count) % column_count);
     pause_for_user();
   };
 
-  const bulb_count = total * BULBS_PER_CARD;
-
-  return (
-    <div className="relative w-full">
-      <button
-        type="button"
-        aria-label="Previous member"
-        onClick={() => go_to(active - 1)}
-        className="absolute left-1 top-1/2 z-30 -translate-y-1/2 inline-flex size-9 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-lg transition hover:bg-white"
-      >
-        <ChevronLeft className="h-5 w-5" />
-      </button>
-
-      <button
-        type="button"
-        aria-label="Next member"
-        onClick={() => go_to(active + 1)}
-        className="absolute right-1 top-1/2 z-30 -translate-y-1/2 inline-flex size-9 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-lg transition hover:bg-white"
-      >
-        <ChevronRight className="h-5 w-5" />
-      </button>
-
-      <div
-        ref={track_ref}
-        onWheel={(event) => {
-          // Only sideways scrolling moves the strip; scrolling the page past it shouldn't pause
-          if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) pause_for_user();
-        }}
-        onTouchStart={pause_for_user}
-        onPointerDown={pause_for_user}
-        className="overflow-x-auto overflow-y-hidden snap-x snap-proximity [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        <div className="relative w-max max-w-none px-[calc(50vw-5.5rem)] sm:px-[40vw]">
-          {/* Big section title in the space before the first polaroid */}
-          <div className="absolute inset-y-0 left-0 hidden w-[40vw] flex-col justify-center pl-8 pr-6 sm:flex sm:pl-16">
-            {subtitle && (
-              <span className="text-[11px] uppercase tracking-[0.35em] text-[#ffe9a8]/80 sm:text-xs">
-                {subtitle}
-              </span>
-            )}
-            <h2 className="mt-2 text-3xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-              {title}
-            </h2>
-          </div>
-
-        <div ref={line_ref} className="relative flex w-max max-w-none items-start gap-12 pb-12 pt-4 sm:gap-20">
+  // One rope with its fairy lights and polaroids
+  const render_row = (indices, row) => (
+        <div
+          key={row}
+          ref={(element) => (line_refs.current[row] = element)}
+          className="relative flex w-max max-w-none items-start gap-12 pb-12 pt-4 sm:gap-20"
+        >
           {/* The rope stretches across every polaroid and scrolls with them */}
           <svg
             aria-hidden="true"
@@ -208,8 +183,8 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
 
           {/* Warm white-yellow fairy lights along the rope */}
           <div aria-hidden="true" className="pointer-events-none absolute -inset-x-12 top-4 h-24 max-w-none">
-            {Array.from({ length: bulb_count }).map((_, index) => {
-              const t = (index + 0.5) / bulb_count;
+            {Array.from({ length: indices.length * BULBS_PER_CARD }).map((_, index) => {
+              const t = (index + 0.5) / (indices.length * BULBS_PER_CARD);
               return (
                 <span
                   key={index}
@@ -225,20 +200,17 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
             })}
           </div>
 
-          {sorted.map(
-            (
-              {
+          {indices.map((index) => {
+              const {
                 name,
                 image,
                 designation,
                 email = "questit@ves.ac.in",
                 github = "https://github.com/QuestIT-Cell",
                 linkedin = "https://www.linkedin.com/company/questit-vesit",
-              },
-              index
-            ) => {
+              } = sorted[index];
               const hang_at = rope_y(rope_positions[index] ?? 0.5);
-              const is_active = index === active;
+              const is_active = column_of(index) === active;
 
               return (
                 <div
@@ -248,7 +220,7 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
                     is_active ? "z-20 scale-[1.08]" : "z-0 brightness-[0.55] saturate-[0.8]"
                   }`}
                   style={{ marginTop: hang_at + 10 }}
-                  onClick={() => go_to(index)}
+                  onClick={() => go_to(column_of(index))}
                 >
                   {/* Soft warm glow behind the spotlighted polaroid */}
                   <div
@@ -327,22 +299,72 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
                   </div>
                 </div>
               );
-            }
-          )}
+            })}
         </div>
+  );
+
+  return (
+    <div className="relative w-full">
+      <button
+        type="button"
+        aria-label="Previous members"
+        onClick={() => go_to(active - 1)}
+        className="absolute left-1 top-1/2 z-30 -translate-y-1/2 inline-flex size-9 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-lg transition hover:bg-white"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+
+      <button
+        type="button"
+        aria-label="Next members"
+        onClick={() => go_to(active + 1)}
+        className="absolute right-1 top-1/2 z-30 -translate-y-1/2 inline-flex size-9 items-center justify-center rounded-full bg-white/90 text-neutral-900 shadow-lg transition hover:bg-white"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
+
+      <div
+        ref={track_ref}
+        onWheel={(event) => {
+          // Only sideways scrolling moves the strip; scrolling the page past it shouldn't pause
+          if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) pause_for_user();
+        }}
+        onTouchStart={pause_for_user}
+        onPointerDown={pause_for_user}
+        className="overflow-x-auto overflow-y-hidden snap-x snap-proximity [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        <div className="relative w-max max-w-none px-[calc(50vw-5.5rem)] sm:px-[40vw]">
+          {/* Big section title in the space before the first polaroid */}
+          <div className="absolute inset-y-0 left-0 hidden w-[40vw] flex-col justify-center pl-8 pr-6 sm:flex sm:pl-16">
+            {subtitle && (
+              <span className="text-[11px] uppercase tracking-[0.35em] text-[#ffe9a8]/80 sm:text-xs">
+                {subtitle}
+              </span>
+            )}
+            <h2 className="mt-2 text-3xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+              {title}
+            </h2>
+          </div>
+
+          <div className="flex max-w-none flex-col">
+            {rows.map((indices, row) => render_row(indices, row))}
+          </div>
         </div>
       </div>
 
-      {/* One dot per member, the lit one is the spotlighted polaroid */}
+      {/* One dot per column, the lit one is the spotlighted column */}
       <div className="mt-2 flex flex-wrap justify-center gap-1.5 px-4 sm:gap-2">
-        {sorted.map(({ name }, index) => (
+        {Array.from({ length: column_count }).map((_, column) => (
           <button
-            key={name}
+            key={column}
             type="button"
-            aria-label={`Show ${name}`}
-            onClick={() => go_to(index)}
+            aria-label={`Show ${sorted
+              .filter((_, index) => column_of(index) === column)
+              .map(({ name }) => name)
+              .join(" and ")}`}
+            onClick={() => go_to(column)}
             className={`h-1.5 rounded-full transition-all ${
-              index === active ? "w-6 bg-[#ffe9a8] sm:w-8" : "w-2.5 bg-white/30 hover:bg-white/50 sm:w-4"
+              column === active ? "w-6 bg-[#ffe9a8] sm:w-8" : "w-2.5 bg-white/30 hover:bg-white/50 sm:w-4"
             }`}
           />
         ))}
