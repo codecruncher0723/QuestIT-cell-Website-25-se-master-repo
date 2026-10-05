@@ -111,7 +111,7 @@ const team = [
             name: "Ankita Punjabi",
             designation: "SR Treasurer",
             email: "2024.ankita.punjabi@ves.ac.in",
-            github: "https://github.com/QuestIT-Cell",
+            github: "https://github.com/ankitapunjabi22",
             linkedin: "https://www.linkedin.com/in/ankita-punjabi-4b80aa375",
             image: "/images/team2026/teMembers/AnkitaPunjabi.jpg",
           },
@@ -146,14 +146,6 @@ const team = [
             github: "https://github.com/Ayushpro45",
             linkedin: "https://www.linkedin.com/in/ayush-lokhande-33306433b/",
             image: "/images/team2026/teMembers/AyushLokhande.jpg",
-          },
-          {
-            name: "Harshika Karamchandani",
-            designation: "SR Content Officer",
-            email: "2024.harshika.karamchandani@ves.ac.in",
-            github: "https://github.com/QuestIT-Cell",
-            linkedin: "https://www.linkedin.com/in/harshika-karamchandani-370643417",
-            image: "/images/team2026/teMembers/HarshikaKaramchandani.jpg",
           },
           {
             name: "Japleen Kaur Arora",
@@ -246,9 +238,9 @@ const team = [
           {
             name: "Soniya Lulla",
             designation: "SR Public Relations Officer",
-            email: "questit@ves.ac.in",
-            github: "https://github.com/QuestIT-Cell",
-            linkedin: "https://www.linkedin.com/company/questit-vesit",
+            email: "2024.soniya.lulla@ves.ac.in",
+            github: "https://github.com/SoniyaDev",
+            linkedin: "https://www.linkedin.com/in/soniya-lulla-36b072338",
             image: "/images/team2026/teMembers/SoniyaLulla.jpg",
           },
           {
