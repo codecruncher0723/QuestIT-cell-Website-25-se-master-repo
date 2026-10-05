@@ -449,8 +449,9 @@ const DeveloperEditorialSection = () => {
                     <span className="text-neutral-700 text-sm select-none">|</span>
 
                     <a
-                      href={`mailto:${currentDev.email}`}
+                      href={`mailto:${currentDev.email}?subject=${encodeURIComponent(`Inquiry regarding Quest-IT - ${currentDev.name}`)}`}
                       aria-label={`${currentDev.name} Email`}
+                      title={`Send email draft to ${currentDev.email}`}
                       className="text-white/80 hover:text-[#22d3ee] transition-colors p-1.5 rounded-lg hover:bg-white/5 group"
                     >
                       <Mail className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 transition-transform group-hover:scale-110" />
@@ -959,8 +960,9 @@ const DeveloperEditorialSection = () => {
                 <span className="text-neutral-700 text-xs select-none">|</span>
 
                 <a
-                  href={`mailto:${currentDev.email}`}
+                  href={`mailto:${currentDev.email}?subject=${encodeURIComponent(`Inquiry regarding Quest-IT - ${currentDev.name}`)}`}
                   aria-label={`${currentDev.name} Email`}
+                  title={`Send email draft to ${currentDev.email}`}
                   className="text-white/80 hover:text-[#22d3ee] transition-colors p-1.5 rounded-lg hover:bg-white/5 active:scale-95"
                 >
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5" />

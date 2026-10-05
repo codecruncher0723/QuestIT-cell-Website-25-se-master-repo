@@ -145,7 +145,8 @@ const Team = () => {
                                     <div className="mt-4 flex gap-2">
                                       <Link
                                         aria-label="Email"
-                                        href={`mailto:${email}`}
+                                        href={`mailto:${email}?subject=${encodeURIComponent(`Quest-IT Inquiry - ${name}`)}`}
+                                        title={`Send email draft to ${name}`}
                                         className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
                                       >
                                         <Mail className="h-4 w-4 transition text-white" />
@@ -219,7 +220,8 @@ const Team = () => {
                               <div className="mt-4 flex gap-2">
                                 <Link
                                   aria-label="Email"
-                                  href={`mailto:${email}`}
+                                  href={`mailto:${email}?subject=${encodeURIComponent(`Quest-IT Inquiry - ${name}`)}`}
+                                  title={`Send email draft to ${name}`}
                                   className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
                                 >
                                   <Mail className="h-4 w-4 transition text-white" />
