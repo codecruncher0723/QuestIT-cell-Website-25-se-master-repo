@@ -5,8 +5,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import PhotoLightboxModal from "./PhotoLightboxModal";
 
+/* ─── Projector Exhibition Images ──────────────────────────────────────────── */
+const PROJECTOR_IMAGES = [
+  "/images/gallery-images/projector/DSC04678_1920x1080.png",
+  "/images/gallery-images/projector/DSC04689_1920x1080.png",
+  "/images/gallery-images/projector/Faculty_grp_photo_1920x1080.png",
+  "/images/gallery-images/projector/genesis-explaination_1920x1080.png",
+  "/images/gallery-images/projector/genesis1.0_1920x1080.png",
+  "/images/gallery-images/projector/genesis_event_1920x1080.png",
+  "/images/gallery-images/projector/quest_council_faculty_pic_1920x1080.png",
+  "/images/gallery-images/projector/SIH_insider_2_1920x1080.png",
+  "/images/gallery-images/projector/sliding_1.jpg",
+  "/images/gallery-images/projector/sliding_8.jpeg",
+  "/images/gallery-images/projector/vibewquest_participants_1920x1080.png",
+  "/images/gallery-images/projector/vibwwquest_participants_1920x1080.png",
+];
+
 /* ─── Constants & Configuration ────────────────────────────────────────────── */
-const TOTAL = 12;
+const TOTAL = PROJECTOR_IMAGES.length;
 const PAUSE_MS = 2400;
 const TRANSITION_DURATION = 1.6;
 const TRANSITION_EASE = [0.35, 0, 0.25, 1];
@@ -20,18 +36,10 @@ const TRANSITION_EASE = [0.35, 0, 0.25, 1];
 ──────────────────────────────────────────────────────────────────────────── */
 const INTRO_DONE = 3;
 
-const getImageExtension = (index) => {
-  const jpgIndices = [1, 2, 4, 5, 9, 11];
-  const jpegIndices = [3, 8, 10, 12];
-  const JPGIndices = [6, 7];
-  if (jpgIndices.includes(index)) return "jpg";
-  if (jpegIndices.includes(index)) return "jpeg";
-  if (JPGIndices.includes(index)) return "JPG";
-  return "jpg";
+const imgSrc = (i) => {
+  const index = ((i % TOTAL) + TOTAL) % TOTAL;
+  return PROJECTOR_IMAGES[index];
 };
-
-const imgSrc = (i) =>
-  `/images/gallery-images/sliding_images/sliding_${i + 1}.${getImageExtension(i + 1)}`;
 
 const CAPTIONS = [
   { top: "ART\nLIVES\nFOREVER", bot: "THE\nCLASSICS\nREIMAGINED" },
