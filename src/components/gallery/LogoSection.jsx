@@ -14,16 +14,16 @@ const LogoSection = () => {
       >
         {/* Soft Radial Center Backlight */}
         <div
-          className="w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] md:w-[700px] md:h-[700px] rounded-full blur-[90px] md:blur-[140px] pointer-events-none opacity-40"
+          className="w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] md:w-[700px] md:h-[700px] rounded-full blur-[90px] md:blur-[140px] pointer-events-none opacity-30"
           style={{
             background:
-              "radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, rgba(6, 182, 212, 0.08) 45%, transparent 70%)",
+              "radial-gradient(circle, rgba(0, 212, 255, 0.25) 0%, rgba(6, 182, 212, 0.05) 45%, transparent 70%)",
           }}
         />
 
         {/* Ambient Subtle Grid Pattern Overlay */}
         <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          className="absolute inset-0 opacity-[0.035] pointer-events-none"
           style={{
             backgroundImage:
               "linear-gradient(to right, #00d4ff 1px, transparent 1px), linear-gradient(to bottom, #00d4ff 1px, transparent 1px)",
@@ -38,21 +38,22 @@ const LogoSection = () => {
         <motion.div
           className="relative z-20 flex items-center justify-center"
           layout
-          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Logo Badge Container (Starts very small -> grows -> glows) */}
+          {/* Logo Badge Container (Starts very small -> grows -> glows temporarily -> glow fades after gallery appears) */}
           <div className="relative z-20 shrink-0 flex items-center justify-center">
-            {/* Ambient Cyan Aura Flare behind Badge (Pulsing Glow) */}
+            {/* Ambient Cyan Aura Flare behind Badge (Ignites then fades away completely to 0 once Gallery appears) */}
             <motion.div
               initial={{ scale: 0.2, opacity: 0 }}
               animate={{
-                scale: [0.2, 1.25, 1],
-                opacity: [0, 0.95, 0.7],
+                scale: [0.2, 1.25, 1.1, 0.8],
+                opacity: [0, 0.95, 0.7, 0],
               }}
               transition={{
-                delay: 0.8,
-                duration: 1.1,
-                ease: "easeOut",
+                delay: 0.35,
+                duration: 1.4,
+                times: [0, 0.25, 0.65, 1],
+                ease: "easeInOut",
               }}
               className="absolute w-[140px] h-[140px] sm:w-[190px] sm:h-[190px] md:w-[240px] md:h-[240px] rounded-full blur-[35px] sm:blur-[50px] pointer-events-none"
               style={{
@@ -61,38 +62,37 @@ const LogoSection = () => {
               }}
             />
 
-            {/* Continuous Breathing Glow Aura after ignition */}
+            {/* The Badge Image with Temporary Glow that removes once Gallery appears */}
             <motion.div
-              animate={{
-                opacity: [0.45, 0.8, 0.45],
-                scale: [0.95, 1.08, 0.95],
+              initial={{
+                scale: 0.08,
+                opacity: 0,
+                rotate: -35,
+                filter: "drop-shadow(0 0 0px rgba(0,212,255,0))",
               }}
-              transition={{
-                delay: 2.0,
-                duration: 3.2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute w-[120px] h-[120px] sm:w-[170px] sm:h-[170px] md:w-[220px] md:h-[220px] rounded-full blur-[30px] sm:blur-[45px] pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(0, 212, 255, 0.6) 0%, rgba(6, 182, 212, 0.2) 50%, transparent 70%)",
-              }}
-            />
-
-            {/* The Badge Image */}
-            <motion.div
-              initial={{ scale: 0.08, opacity: 0, rotate: -35 }}
               animate={{
                 scale: 1,
                 opacity: 1,
                 rotate: 0,
+                filter: [
+                  "drop-shadow(0 0 0px rgba(0,212,255,0))",
+                  "drop-shadow(0 0 25px rgba(0,212,255,0.85)) drop-shadow(0 0 45px rgba(0,212,255,0.4))",
+                  "drop-shadow(0 0 15px rgba(0,212,255,0.5))",
+                  "drop-shadow(0 0 0px rgba(0,212,255,0))",
+                ],
               }}
               transition={{
-                duration: 0.85,
-                ease: [0.16, 1, 0.3, 1],
+                scale: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+                opacity: { duration: 0.35 },
+                rotate: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+                filter: {
+                  delay: 0.35,
+                  duration: 1.4,
+                  times: [0, 0.3, 0.65, 1],
+                  ease: "easeInOut",
+                },
               }}
-              className="relative w-[95px] h-[95px] sm:w-[130px] sm:h-[130px] md:w-[165px] md:h-[165px] lg:w-[185px] lg:h-[185px] filter drop-shadow-[0_0_20px_rgba(0,212,255,0.7)] drop-shadow-[0_0_40px_rgba(0,212,255,0.35)]"
+              className="relative w-[95px] h-[95px] sm:w-[130px] sm:h-[130px] md:w-[165px] md:h-[165px] lg:w-[185px] lg:h-[185px]"
             >
               <Image
                 src="/images/quest-badge-logo.png"
@@ -110,18 +110,18 @@ const LogoSection = () => {
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "auto", opacity: 1 }}
             transition={{
-              delay: 1.3,
-              duration: 0.8,
+              delay: 0.75,
+              duration: 0.65,
               ease: [0.16, 1, 0.3, 1],
             }}
           >
             <motion.div
               className="whitespace-nowrap pl-3 sm:pl-5 md:pl-7 flex items-center"
-              initial={{ x: -90, opacity: 0, filter: "blur(6px)" }}
+              initial={{ x: -80, opacity: 0, filter: "blur(6px)" }}
               animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
               transition={{
-                delay: 1.35,
-                duration: 0.75,
+                delay: 0.8,
+                duration: 0.6,
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
@@ -135,26 +135,26 @@ const LogoSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* Bottom Lockup: "GALLERY" Text (Appears from behind logo and text moving down) */}
+        {/* Bottom Lockup: Bright White "GALLERY" Text (Appears from behind logo and text moving down) */}
         <div className="relative z-0 flex flex-col items-center mt-3 sm:mt-5 overflow-visible">
           <motion.div
-            initial={{ y: -50, opacity: 0, filter: "blur(8px)" }}
+            initial={{ y: -45, opacity: 0, filter: "blur(8px)" }}
             animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
             transition={{
-              delay: 2.1,
-              duration: 0.85,
+              delay: 1.5,
+              duration: 0.65,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="flex items-center justify-center gap-3 sm:gap-5"
           >
-            {/* Glowing Accent Lines */}
-            <div className="h-[1px] w-6 sm:w-12 md:w-20 bg-gradient-to-r from-transparent to-cyan-400/70" />
+            {/* Elegant Accent Lines */}
+            <div className="h-[1px] w-6 sm:w-12 md:w-20 bg-gradient-to-r from-transparent to-white/70" />
 
-            <h1 className="text-sm sm:text-lg md:text-2xl lg:text-3xl font-light tracking-[0.45em] sm:tracking-[0.6em] md:tracking-[0.75em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-neutral-300 via-cyan-100 to-neutral-300 drop-shadow-[0_0_15px_rgba(0,212,255,0.45)]">
+            <h1 className="text-sm sm:text-lg md:text-2xl lg:text-3xl font-medium tracking-[0.45em] sm:tracking-[0.6em] md:tracking-[0.75em] uppercase text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.85)]">
               Gallery
             </h1>
 
-            <div className="h-[1px] w-6 sm:w-12 md:w-20 bg-gradient-to-l from-transparent to-cyan-400/70" />
+            <div className="h-[1px] w-6 sm:w-12 md:w-20 bg-gradient-to-l from-transparent to-white/70" />
           </motion.div>
         </div>
       </div>
@@ -163,7 +163,7 @@ const LogoSection = () => {
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.9, duration: 0.6 }}
+        transition={{ delay: 2.2, duration: 0.5 }}
         className="absolute bottom-6 sm:bottom-10 flex flex-col items-center gap-2 text-gray-400 select-none pointer-events-none"
       >
         <span className="text-[11px] sm:text-xs md:text-sm tracking-[0.25em] uppercase font-mono text-cyan-400/80">
