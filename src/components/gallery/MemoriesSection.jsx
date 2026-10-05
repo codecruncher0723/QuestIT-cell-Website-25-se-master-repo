@@ -92,10 +92,8 @@ const MemoryCard = ({
         transform: `translate3d(${card.x}px, ${card.y}px, ${card.z}px) rotateX(${card.rotateX || 0}deg) rotateY(${card.rotateY || 0}deg) rotateZ(${card.rotateZ || 0}deg) scale(${card.baseScale})`,
         zIndex: isFocal ? 150 : card.zIndex,
         opacity: card.opacity,
-        filter: `brightness(${card.brightness})${
-          card.blur > 0.1 ? ` blur(${card.blur}px)` : ""
-        }`,
-        willChange: "transform, opacity, filter",
+        filter: `brightness(${card.brightness})`,
+        willChange: "transform, opacity",
         transformStyle: "preserve-3d",
         backfaceVisibility: "hidden",
         pointerEvents: card.isVisible ? "auto" : "none",
@@ -152,10 +150,11 @@ const MemoryCard = ({
               src={card.src}
               alt={`Quest-IT Memory ${card.index + 1} (Mirrored)`}
               fill
-              quality={95}
-              sizes="(max-width: 640px) 350px, (max-width: 1024px) 550px, 800px"
+              quality={100}
+              unoptimized
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover select-none pointer-events-none"
-              priority={card.index < 4}
+              priority={card.index < 6}
             />
           </div>
           <div
@@ -188,10 +187,11 @@ const MemoryCard = ({
             src={card.src}
             alt={`Quest-IT Memory ${card.index + 1}`}
             fill
-            quality={95}
-            sizes="(max-width: 640px) 450px, (max-width: 1024px) 700px, 1000px"
+            quality={100}
+            unoptimized
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover select-none pointer-events-none"
-            priority={card.index < 4}
+            priority={card.index < 6}
           />
           <div
             className="absolute inset-0 pointer-events-none"
@@ -559,8 +559,8 @@ const MemoriesSection = () => {
 
         depthFactor = (cosT + 1) / 2;
         baseScale = 0.74 + depthFactor * 0.20;
-        brightness = Math.round((0.68 + depthFactor * 0.32) * 100) / 100;
-        blur = Math.round((1 - depthFactor) * 0.3 * 10) / 10;
+        brightness = Math.round((0.88 + depthFactor * 0.12) * 100) / 100;
+        blur = 0;
       } else {
         // DESKTOP / TABLET HORIZONTAL 3D ORBIT
         x = Math.round(Rx * sinT * 10) / 10;
@@ -574,8 +574,8 @@ const MemoriesSection = () => {
 
         depthFactor = (cosT + 1) / 2;
         baseScale = 0.70 + depthFactor * 0.26;
-        brightness = Math.round((0.62 + depthFactor * 0.38) * 100) / 100;
-        blur = Math.round((1 - depthFactor) * 0.4 * 10) / 10;
+        brightness = Math.round((0.85 + depthFactor * 0.15) * 100) / 100;
+        blur = 0;
       }
 
       // Focal state strictly tied to active step
