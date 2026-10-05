@@ -31,8 +31,8 @@ const ORBITAL_IMAGES = [
 
 const INITIAL_OFFSET_INDEX = 2;
 const TOTAL_CARDS = ORBITAL_IMAGES.length;
-const PAUSE_MS = 2500;
-const ROTATION_DURATION = 1.4;
+const PAUSE_MS = 1800;
+const ROTATION_DURATION = 0.95;
 
 const mod = (n, m) => ((n % m) + m) % m;
 
@@ -329,9 +329,9 @@ const MemoriesSection = () => {
 
     if (targetStep === focalStepRef.current) return;
 
-    // Responsive duration proportional to travel distance (capped between 1.15s and 2.0s)
+    // Responsive duration proportional to travel distance (capped between 0.75s and 1.35s)
     const dist = Math.abs(targetStep - currentVal);
-    const customDuration = Math.min(1.15 + Math.max(dist - 1, 0) * 0.25, 2.0);
+    const customDuration = Math.min(0.75 + Math.max(dist - 1, 0) * 0.18, 1.35);
 
     rotateToStep(targetStep, customDuration);
   };
