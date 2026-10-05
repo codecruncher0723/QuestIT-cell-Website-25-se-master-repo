@@ -149,7 +149,7 @@ const team = [
           },
           {
             name: "Japleen Kaur Arora",
-            designation: "Deputy Seceratary",
+            designation: "Deputy Secretary",
             email: "2024.japleen.arora@ves.ac.in",
             github: "https://github.com/japleenkaurarora17",
             linkedin: "https://www.linkedin.com/in/japleen-kaur-arora-a805aa312",
@@ -205,7 +205,7 @@ const team = [
           },
           {
             name: "Pradnyesh Patil",
-            designation: "Deputy Seceratary",
+            designation: "Deputy Secretary",
             email: "2024.pradnyesh.patil@ves.ac.in",
             github: "https://github.com/pradsgoat7",
             linkedin: "https://www.linkedin.com/in/pradnyesh-patil-aba90a221/",
@@ -274,7 +274,7 @@ const team = [
             image: "/images/team2026/seMembers/AntaraDhavan.jpg",
           },
           {
-            name: "Anushka Chaurarsia",
+            name: "Anushka Chaurasia",
             designation: "JR Content Officer",
             email: "2025.anushka.chaurasia@ves.ac.in",
             github: "https://github.com/anushkachaurasia087-stack",
@@ -291,7 +291,7 @@ const team = [
           },
           {
             name: "Avani Killekar",
-            designation: "JR Techinical Officer",
+            designation: "JR Technical Officer",
             email: "2025.avani.killekar@ves.ac.in",
             github: "https://github.com/avanikillekar",
             linkedin: "https://www.linkedin.com/in/avani-killekar-4184573b8",
@@ -307,7 +307,7 @@ const team = [
           },
           {
             name: "Chaitali Rane",
-            designation: "JR Techinical Officer",
+            designation: "JR Technical Officer",
             email: "2025.chaitali.rane@ves.ac.in",
             github: "https://github.com/C172007",
             linkedin: "https://www.linkedin.com/in/chaitalirane1707",
@@ -339,7 +339,7 @@ const team = [
           },
           {
             name: "Karthik Kotian",
-            designation: "JR Techinical Officer",
+            designation: "JR Technical Officer",
             email: "2025.karthik.kotian@ves.ac.in",
             github: "https://github.com/codecruncher0723",
             linkedin: "https://www.linkedin.com/in/karthik-kotian-3aa590384",
@@ -355,7 +355,7 @@ const team = [
           },
           {
             name: "Manish Awari",
-            designation: "JR Techinical Officer",
+            designation: "JR Technical Officer",
             email: "2025.manish.awari@ves.ac.in",
             github: "https://github.com/themanishawari",
             linkedin: "https://www.linkedin.com/in/manishawari/",
@@ -395,7 +395,7 @@ const team = [
           },
           {
             name: "Sankalp Mane",
-            designation: "JR Techinical Officer",
+            designation: "JR Technical Officer",
             email: "2025.sankalp.mane@ves.ac.in",
             github: "https://github.com/Sankymane",
             linkedin: "https://www.linkedin.com/in/sankalp-mane-53175936b",
@@ -403,7 +403,7 @@ const team = [
           },
           {
             name: "Sarra Khadse",
-            designation: "JR Techinical Officer",
+            designation: "JR Technical Officer",
             email: "2025.sarra.khadse@ves.ac.in",
             github: "https://github.com/sarrakhadse07",
             linkedin: "https://www.linkedin.com/in/sarra-khadse-0b7719386",

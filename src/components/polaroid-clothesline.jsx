@@ -27,8 +27,9 @@ const BULBS_PER_CARD = 4;
 // How far the rope reaches past the first and last polaroid (px, matches -inset-x-12)
 const ROPE_OVERHANG = 48;
 
-// Groups bigger than this hang on two ropes that scroll together
+// Groups bigger than this hang on two ropes that scroll together (tablet and desktop only)
 const TWO_ROWS_FROM = 10;
+const PHONE_QUERY = "(max-width: 639px)";
 
 const rope_y = (t) => ROPE_TOP + 4 * ROPE_SAG * t * (1 - t);
 
@@ -48,11 +49,25 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
   const [interacting, setInteracting] = useState(false);
   const reduce_motion = useReducedMotion();
 
+  // Phones always use a single rope, two ropes would be taller than the screen
+  const [is_phone, setIsPhone] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia(PHONE_QUERY);
+    const update = () => setIsPhone(query.matches);
+    update();
+    query.addEventListener("change", update);
+    window.addEventListener("resize", update);
+    return () => {
+      query.removeEventListener("change", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   const sorted = [...members].sort((a, b) => a.name.localeCompare(b.name));
   const total = sorted.length;
 
   // Fill column by column (top, bottom, top, ...) so the spotlight zig-zags left to right
-  const row_count = total > TWO_ROWS_FROM ? 2 : 1;
+  const row_count = !is_phone && total > TWO_ROWS_FROM ? 2 : 1;
   const rows = Array.from({ length: row_count }, (_, row) =>
     sorted.map((_, index) => index).filter((index) => index % row_count === row)
   );
@@ -60,6 +75,13 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
   // The spotlight lights a whole column (top and bottom polaroid together)
   const column_count = Math.ceil(total / row_count);
   const column_of = (index) => Math.floor(index / row_count);
+
+  // Start again from the first column when switching between one and two ropes
+  const row_count_ref = useRef(row_count);
+  useEffect(() => {
+    row_count_ref.current = row_count;
+    setActive(0);
+  }, [row_count]);
 
   // Where each polaroid's centre falls along the rope (0 = left end, 1 = right end)
   const [rope_positions, setRopePositions] = useState(() =>
@@ -164,7 +186,7 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
         nearest_distance = distance;
       }
     });
-    return Math.floor(nearest / row_count);
+    return Math.floor(nearest / row_count_ref.current);
   };
 
   // Stop the autoplay while someone swipes or scrolls, then pick up from where they left it
