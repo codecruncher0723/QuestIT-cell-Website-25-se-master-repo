@@ -15,7 +15,6 @@ import PhotoLightboxModal from "./PhotoLightboxModal";
 /* ─── Orbital Memories Exhibition Images ───────────────────────────────────── */
 const ORBITAL_IMAGES = [
   "/images/gallery-images/Orbital/diagonal_12.jpg",
-  "/images/gallery-images/Orbital/diagonal_7.jpeg",
   "/images/gallery-images/Orbital/diagonal_9.png",
   "/images/gallery-images/Orbital/dinner-photo_1920x1080.png",
   "/images/gallery-images/Orbital/download_1920x1080.png",
