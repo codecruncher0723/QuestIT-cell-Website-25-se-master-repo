@@ -625,7 +625,7 @@ const DeveloperEditorialSection = () => {
                   className="absolute inset-0 w-full flex flex-col items-center text-center justify-start select-none px-4"
                 >
                   {/* Contribution Short Heading */}
-                  <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold tracking-wide text-white leading-snug text-center mx-auto max-w-md">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-white leading-snug text-center mx-auto max-w-lg">
                     {workTitle}
                   </h2>
 
@@ -888,7 +888,7 @@ const DeveloperEditorialSection = () => {
                   }}
                   className="absolute inset-0 flex flex-col items-center justify-start text-center select-none px-1"
                 >
-                  <h2 className="text-[11px] sm:text-xs font-semibold text-white tracking-wide leading-tight max-w-[300px] text-center mx-auto">
+                  <h2 className="text-xs sm:text-sm font-bold text-white tracking-normal leading-snug max-w-[320px] text-center mx-auto">
                     {workTitle}
                   </h2>
 
