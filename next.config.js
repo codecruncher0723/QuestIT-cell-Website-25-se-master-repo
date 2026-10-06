@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-const with_PWA = require("next-pwa")({
-  dest: "public",
-  disable: process.env.NODE_ENV === "development",
-});
-
 const next_config = {
   // Add empty turbopack config to silence Next.js 16 warning
   turbopack: {},
@@ -32,4 +27,4 @@ const next_config = {
   skipProxyUrlNormalize: true,
 };
 
-module.exports = with_PWA(next_config);
+module.exports = next_config;

@@ -1,13 +1,15 @@
-import { FlatCompat } from "@eslint/eslintrc";
-
-const compat = new FlatCompat({
-  baseDirectory: import.meta.dirname,
-});
-
-const eslint_config = [
-  ...compat.config({
-    extends: ["next/core-web-vitals"],
-  }),
+export default [
+  {
+    ignores: [".next/**", "out/**", "node_modules/**"],
+  },
+  {
+    files: ["**/*.{js,jsx,mjs,cjs}"],
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+  },
 ];
-
-export default eslint_config;

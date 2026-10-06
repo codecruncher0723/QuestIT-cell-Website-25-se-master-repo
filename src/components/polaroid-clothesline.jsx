@@ -9,7 +9,8 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 
 // App's External Imports
 import { useReducedMotion } from "framer-motion";
-import { Mail, Github, Linkedin, ChevronLeft, ChevronRight } from "lucide-react";
+import { Mail, ChevronLeft, ChevronRight } from "lucide-react";
+import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
 
 // Rope geometry (px): where the rope starts and how far it sags in the middle
 const ROPE_TOP = 14;
