@@ -33,6 +33,9 @@ const PHONE_QUERY = "(max-width: 639px)";
 
 const rope_y = (t) => ROPE_TOP + 4 * ROPE_SAG * t * (1 - t);
 
+// How many two-row strips are open; while switching TE -> SE both exist for a moment
+let open_two_row_strips = 0;
+
 // Horizontal centre of a polaroid, measured from the visible left edge of the strip
 const center_in_track = (track, card) => {
   const card_rect = card.getBoundingClientRect();
@@ -160,13 +163,19 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
       last_y = y;
     };
 
+    open_two_row_strips += 1;
     body.dataset.clotheslineOpen = "true";
     window.addEventListener("scroll", on_scroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", on_scroll);
-      delete body.dataset.clotheslineOpen;
-      delete body.dataset.menuHidden;
+      open_two_row_strips -= 1;
+
+      // Only bring the menu bar back to normal once the last two-row strip has closed
+      if (open_two_row_strips === 0) {
+        delete body.dataset.clotheslineOpen;
+        delete body.dataset.menuHidden;
+      }
     };
   }, [row_count]);
 
