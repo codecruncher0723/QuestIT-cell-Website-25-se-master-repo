@@ -8,7 +8,7 @@ import { fetch_current_year } from "@/modules/utils";
 import { LinkPreview } from "@/components/ui/link-preview";
 
 // App's External Imports
-import { Github, Linkedin, Instagram } from "lucide-react";
+import { FaGithub as Github, FaLinkedin as Linkedin, FaInstagram as Instagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
