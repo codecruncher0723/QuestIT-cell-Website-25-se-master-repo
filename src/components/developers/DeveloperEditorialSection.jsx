@@ -625,7 +625,7 @@ const DeveloperEditorialSection = () => {
                   className="absolute inset-0 w-full flex flex-col items-center text-center justify-start select-none px-4"
                 >
                   {/* Contribution Short Heading */}
-                  <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold tracking-wide text-[#22d3ee] leading-snug text-center mx-auto max-w-md">
+                  <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold tracking-wide text-white leading-snug text-center mx-auto max-w-md">
                     {workTitle}
                   </h2>
 
@@ -698,7 +698,7 @@ const DeveloperEditorialSection = () => {
           </div>
 
           {/* 2. 3D Hero Card Stack with 4 Fanned Background Cards, Hover Tilt & Mobile Navigation Buttons */}
-          <div className="relative w-full flex items-center justify-center mt-2 mb-2 shrink-0">
+          <div className="relative w-full flex items-center justify-center mt-2 mb-1 shrink-0">
             {/* Mobile Previous Button */}
             <button
               type="button"
@@ -851,8 +851,8 @@ const DeveloperEditorialSection = () => {
             </button>
           </div>
 
-          {/* 3. Work / Contribution with Static Visual Anchor & Masked Vertical Reveal */}
-          <div className="relative w-full flex flex-col items-center justify-center shrink-0 px-2 sm:px-3 mt-1.5 sm:mt-2">
+          {/* 3. Work / Contribution with Static Visual Anchor & Masked Vertical Reveal (Moved downwards) */}
+          <div className="relative w-full flex flex-col items-center justify-center shrink-0 px-2 sm:px-3 mt-4 sm:mt-5">
             <div className="flex items-center justify-center gap-2">
               <span className="w-5 h-[2px] bg-[#22d3ee] inline-block" />
               <span className="font-mono text-[10px] sm:text-xs tracking-[0.22em] text-[#22d3ee] font-semibold uppercase">
@@ -888,7 +888,7 @@ const DeveloperEditorialSection = () => {
                   }}
                   className="absolute inset-0 flex flex-col items-center justify-start text-center select-none px-1"
                 >
-                  <h2 className="text-[11px] sm:text-xs font-semibold text-[#22d3ee] tracking-wide leading-tight max-w-[300px] text-center mx-auto">
+                  <h2 className="text-[11px] sm:text-xs font-semibold text-white tracking-wide leading-tight max-w-[300px] text-center mx-auto">
                     {workTitle}
                   </h2>
 
