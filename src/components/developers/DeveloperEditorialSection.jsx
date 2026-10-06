@@ -7,15 +7,13 @@ import { Github, Linkedin, Mail, ChevronLeft, ChevronRight } from "lucide-react"
 import developers from "@/constants/developers";
 
 const DEVELOPER_WORK_TITLES = {
+  "Shravanya Andhale": "Website Deployment & Domain Coordination",
   "Atharva Lotankar": "UI Redesign & Frontend Components",
   "Jay Kerkar": "Frontend Architecture & PWA",
-  "Anish Tawade": "Website Data & Event Management",
   "Pranav Titambe": "Backend Optimization & Dynamic Workflows",
-  "Karthik Kotian": "Gallery & Developer Section Redesign",
   "Shivam Mishra": "Genesis Microsite & Subpath Routing",
+  "Karthik Kotian": "Gallery & Developer Section Redesign",
   "Avani Killekar": "Council 2026–27 & Media Standardization",
-  "Chaitali Rane": "Council 2026–27 & Interactive UI Polish",
-  "Sarra Khadse": "Council 2026–27 & UI Animations",
 };
 
 // Compute physical card stack transformation based on offset relative to active card
@@ -137,7 +135,7 @@ const DeveloperEditorialSection = () => {
     };
   }, []);
 
-  // One-scroll step advances: exactly 1 wheel scroll or swipe moves the card stack
+  // One-step manual navigation
   const goToNext = () => {
     if (isLockedRef.current) return;
     const currentIdx = activeIndexRef.current;
@@ -147,13 +145,7 @@ const DeveloperEditorialSection = () => {
       setActiveIndex(currentIdx + 1);
       setTimeout(() => {
         isLockedRef.current = false;
-      }, 680);
-    } else {
-      // At Last Developer: next scroll flows naturally into website Footer
-      const footer = document.querySelector("footer");
-      if (footer) {
-        footer.scrollIntoView({ behavior: "smooth" });
-      }
+      }, 700);
     }
   };
 
@@ -166,11 +158,11 @@ const DeveloperEditorialSection = () => {
       setActiveIndex(currentIdx - 1);
       setTimeout(() => {
         isLockedRef.current = false;
-      }, 680);
+      }, 700);
     }
   };
 
-  // Wheel listener: 1 scroll gesture changes cards smoothly without stickiness
+  // Wheel listener: 1 scroll gesture changes cards smoothly without skipping or prematurely jumping to footer
   useEffect(() => {
     let accumulatedDelta = 0;
     let resetTimer = null;
@@ -181,12 +173,18 @@ const DeveloperEditorialSection = () => {
 
       // When viewing the developer section (top of page)
       if (scrollY <= 50) {
+        // If locked during an active card transition, consume all wheel momentum so it doesn't leak into footer
+        if (isLockedRef.current) {
+          if (e.cancelable) e.preventDefault();
+          return;
+        }
+
         if (e.deltaY > 0) {
           // Scrolling DOWN
           if (currentIdx < developers.length - 1) {
-            e.preventDefault();
+            if (e.cancelable) e.preventDefault();
             accumulatedDelta += e.deltaY;
-            if (!isLockedRef.current && (accumulatedDelta >= 20 || Math.abs(e.deltaY) >= 20)) {
+            if (accumulatedDelta >= 25 || Math.abs(e.deltaY) >= 25) {
               isLockedRef.current = true;
               accumulatedDelta = 0;
               setDirection(1);
@@ -194,23 +192,18 @@ const DeveloperEditorialSection = () => {
               setTimeout(() => {
                 isLockedRef.current = false;
                 accumulatedDelta = 0;
-              }, 680);
+              }, 700);
             }
           } else {
-            // At Last Developer: allow natural scroll down into website Footer
-            if (e.deltaY > 30) {
-              const footer = document.querySelector("footer");
-              if (footer) {
-                footer.scrollIntoView({ behavior: "smooth" });
-              }
-            }
+            // At the LAST card and NOT locked:
+            // User is deliberately scrolling after landing on the last card -> allow natural scroll downward.
           }
         } else if (e.deltaY < 0) {
           // Scrolling UP
           if (currentIdx > 0) {
-            e.preventDefault();
+            if (e.cancelable) e.preventDefault();
             accumulatedDelta += e.deltaY;
-            if (!isLockedRef.current && (Math.abs(accumulatedDelta) >= 20 || Math.abs(e.deltaY) >= 20)) {
+            if (Math.abs(accumulatedDelta) >= 25 || Math.abs(e.deltaY) >= 25) {
               isLockedRef.current = true;
               accumulatedDelta = 0;
               setDirection(-1);
@@ -218,7 +211,7 @@ const DeveloperEditorialSection = () => {
               setTimeout(() => {
                 isLockedRef.current = false;
                 accumulatedDelta = 0;
-              }, 680);
+              }, 700);
             }
           }
         }
@@ -252,6 +245,10 @@ const DeveloperEditorialSection = () => {
       const deltaY = touchStartY - e.touches[0].clientY;
 
       if (window.scrollY <= 40) {
+        if (isLockedRef.current) {
+          if (e.cancelable) e.preventDefault();
+          return;
+        }
         if (deltaY > 15 && currentIdx < developers.length - 1) {
           if (e.cancelable) e.preventDefault();
         } else if (deltaY < -15 && currentIdx > 0) {
@@ -261,29 +258,26 @@ const DeveloperEditorialSection = () => {
     };
 
     const handleTouchEnd = (e) => {
+      if (isLockedRef.current) return;
       const currentIdx = activeIndexRef.current;
       const deltaY = touchStartY - e.changedTouches[0].clientY;
       const deltaTime = Date.now() - touchStartTime;
 
       if (window.scrollY <= 50) {
         if ((deltaY > 25 || (deltaY > 12 && deltaTime < 250)) && currentIdx < developers.length - 1) {
-          if (!isLockedRef.current) {
-            isLockedRef.current = true;
-            setDirection(1);
-            setActiveIndex(currentIdx + 1);
-            setTimeout(() => {
-              isLockedRef.current = false;
-            }, 680);
-          }
+          isLockedRef.current = true;
+          setDirection(1);
+          setActiveIndex(currentIdx + 1);
+          setTimeout(() => {
+            isLockedRef.current = false;
+          }, 700);
         } else if ((deltaY < -25 || (deltaY < -12 && deltaTime < 250)) && currentIdx > 0) {
-          if (!isLockedRef.current) {
-            isLockedRef.current = true;
-            setDirection(-1);
-            setActiveIndex(currentIdx - 1);
-            setTimeout(() => {
-              isLockedRef.current = false;
-            }, 680);
-          }
+          isLockedRef.current = true;
+          setDirection(-1);
+          setActiveIndex(currentIdx - 1);
+          setTimeout(() => {
+            isLockedRef.current = false;
+          }, 700);
         }
       }
     };
@@ -379,7 +373,7 @@ const DeveloperEditorialSection = () => {
             </div>
 
             {/* Masked Vertical Reveal Window */}
-            <div className="relative overflow-hidden w-full h-[220px] md:h-[230px] lg:h-[270px] xl:h-[300px] mt-2.5 lg:mt-4">
+            <div className="relative overflow-hidden w-full h-[230px] md:h-[250px] lg:h-[280px] xl:h-[310px] mt-2.5 lg:mt-4">
               <AnimatePresence custom={direction} initial={false}>
                 <motion.div
                   key={currentDev.name}
@@ -521,7 +515,7 @@ const DeveloperEditorialSection = () => {
                 }}
               />
 
-              {/* The 4 Developer Cards in Physical Card Deck Motion */}
+              {/* The Developer Cards in Physical Card Deck Motion */}
               {developers.map((dev, idx) => {
                 const offset = idx - activeIndex;
                 const cardStyle = getCardStyle(offset, false);
@@ -602,7 +596,7 @@ const DeveloperEditorialSection = () => {
             </div>
 
             {/* Masked Vertical Reveal Window */}
-            <div className="relative overflow-hidden w-full h-[220px] md:h-[230px] lg:h-[270px] xl:h-[300px] mt-2.5 lg:mt-4">
+            <div className="relative overflow-hidden w-full h-[230px] md:h-[250px] lg:h-[280px] xl:h-[310px] mt-2.5 lg:mt-4">
               <AnimatePresence custom={direction} initial={false}>
                 <motion.div
                   key={currentDev.name}
@@ -630,13 +624,13 @@ const DeveloperEditorialSection = () => {
                   }}
                   className="absolute inset-0 w-full flex flex-col items-center text-center justify-start select-none px-4"
                 >
-                  {/* Contribution Title */}
-                  <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-snug text-center mx-auto">
+                  {/* Contribution Short Heading */}
+                  <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold tracking-wide text-[#22d3ee] leading-snug text-center mx-auto max-w-md">
                     {workTitle}
                   </h2>
 
-                  {/* Authentic Description */}
-                  <p className="mt-3 lg:mt-4 text-xs md:text-sm lg:text-base xl:text-lg text-neutral-300 leading-relaxed max-w-sm lg:max-w-md line-clamp-4 lg:line-clamp-none text-center mx-auto">
+                  {/* Authentic Description (Full readability in all views) */}
+                  <p className="mt-2.5 lg:mt-3.5 text-xs md:text-sm lg:text-[15px] xl:text-base text-neutral-300 leading-relaxed max-w-sm lg:max-w-md xl:max-w-lg text-center mx-auto">
                     {currentDev.description}
                   </p>
                 </motion.div>
@@ -704,7 +698,7 @@ const DeveloperEditorialSection = () => {
           </div>
 
           {/* 2. 3D Hero Card Stack with 4 Fanned Background Cards, Hover Tilt & Mobile Navigation Buttons */}
-          <div className="relative w-full flex items-center justify-center mt-2 mb-3 shrink-0">
+          <div className="relative w-full flex items-center justify-center mt-2 mb-2 shrink-0">
             {/* Mobile Previous Button */}
             <button
               type="button"
@@ -857,8 +851,8 @@ const DeveloperEditorialSection = () => {
             </button>
           </div>
 
-          {/* 3. Work / Contribution with Static Visual Anchor & Masked Vertical Reveal (Centered with Balanced Side Spacing) */}
-          <div className="relative w-full flex flex-col items-center justify-center shrink-0 px-2 sm:px-3 mt-[20px]">
+          {/* 3. Work / Contribution with Static Visual Anchor & Masked Vertical Reveal */}
+          <div className="relative w-full flex flex-col items-center justify-center shrink-0 px-2 sm:px-3 mt-1.5 sm:mt-2">
             <div className="flex items-center justify-center gap-2">
               <span className="w-5 h-[2px] bg-[#22d3ee] inline-block" />
               <span className="font-mono text-[10px] sm:text-xs tracking-[0.22em] text-[#22d3ee] font-semibold uppercase">
@@ -866,7 +860,7 @@ const DeveloperEditorialSection = () => {
               </span>
             </div>
 
-            <div className="relative overflow-hidden w-full h-[120px] sm:h-[130px] mt-1">
+            <div className="relative overflow-hidden w-full h-[125px] sm:h-[135px] mt-0.5">
               <AnimatePresence custom={direction} initial={false}>
                 <motion.div
                   key={currentDev.name}
@@ -892,13 +886,13 @@ const DeveloperEditorialSection = () => {
                     y: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
                     opacity: { duration: 0.5, ease: "easeInOut" },
                   }}
-                  className="absolute inset-0 flex flex-col items-center justify-start text-center select-none px-2"
+                  className="absolute inset-0 flex flex-col items-center justify-start text-center select-none px-1"
                 >
-                  <h2 className="text-xs sm:text-sm font-bold text-white leading-tight max-w-[300px] text-center mx-auto">
+                  <h2 className="text-[11px] sm:text-xs font-semibold text-[#22d3ee] tracking-wide leading-tight max-w-[300px] text-center mx-auto">
                     {workTitle}
                   </h2>
 
-                  <p className="mt-1.5 text-[11px] sm:text-xs text-neutral-300 leading-relaxed max-w-[340px] text-center mx-auto">
+                  <p className="mt-1 text-[11px] sm:text-xs text-neutral-300 leading-relaxed max-w-[340px] text-center mx-auto">
                     {currentDev.description}
                   </p>
                 </motion.div>
@@ -907,7 +901,7 @@ const DeveloperEditorialSection = () => {
           </div>
 
           {/* 4. Social Icons with Masked Vertical Reveal */}
-          <div className="relative w-full overflow-hidden h-[34px] sm:h-[38px] flex items-center justify-center shrink-0 mt-1.5">
+          <div className="relative w-full overflow-hidden h-[34px] sm:h-[38px] flex items-center justify-center shrink-0 mt-1">
             <AnimatePresence custom={direction} initial={false}>
               <motion.div
                 key={currentDev.name}

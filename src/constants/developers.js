@@ -1,5 +1,15 @@
 const developers = [
   {
+    name: "Shravanya Andhale",
+    role: "Website Deployment & Domain Coordinator",
+    email: "2023.shravanya.andhale@ves.ac.in",
+    github: "https://github.com/Shravanya178",
+    linkedin: "https://www.linkedin.com/in/shravanya-andhale-b729a2314/",
+    image: "/images/dev_images/shravanya_andhale.jpg",
+    description:
+      "Managed QuestIT website domain deployment and publishing through Vercel, coordinating with faculty for credentials, CNAME configuration, domain verification, and seamless website accessibility.",
+  },
+  {
     name: "Atharva Lotankar",
     role: "Frontend & Web Management Developer",
     email: "2023.atharva.lotankar@ves.ac.in",
@@ -60,16 +70,6 @@ const developers = [
     image: "/images/dev_images/avani_killekar.png",
     description:
       "Added the Quest IT Council 2026–27 team section with BE, TE, and SE groups, organized and optimized member profiles and images, and enhanced the page with smooth card animations and hover effects.",
-  },
-  {
-    name: "Shravanya Andhale",
-    role: "Website Deployment & Domain Coordinator",
-    email: "2023.shravanya.andhale@ves.ac.in",
-    github: "https://github.com/Shravanya178",
-    linkedin: "https://www.linkedin.com/in/shravanya-andhale-b729a2314/",
-    image: "/images/dev_images/shravanya_andhale.jpg",
-    description:
-      "Managed QuestIT website domain deployment and publishing through Vercel, coordinating with faculty for credentials, CNAME configuration, domain verification, and seamless website accessibility.",
   },
 ];
 
