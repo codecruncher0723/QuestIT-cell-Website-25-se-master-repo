@@ -44,7 +44,7 @@ const Home = () => {
           alt="Genesis 2.0 Banner"
           width={1920}
           height={1080}
-          className="absolute inset-0 w-full h-full object-cover block m-0 p-0"
+          className="absolute inset-0 w-full h-full object-cover object-right md:object-center block m-0 p-0"
           style={{
             maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
