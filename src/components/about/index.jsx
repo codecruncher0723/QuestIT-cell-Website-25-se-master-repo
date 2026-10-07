@@ -21,11 +21,13 @@ const About = () => {
   ];
 
   return (
-    <div id="about" className="px-4">
+    <div id="about" className="px-4 mt-20 md:mt-32">
       <TypewriterEffect words={words} className="pb-12" />
 
       <TextGenerateEffect
         words={about}
+        duration={0.3}
+        staggerDuration={0.03}
         className="bg-neutral-900 rounded-xl p-7 w-full max-w-none mx-auto"
       />
 

@@ -17,7 +17,8 @@ import { LinkPreview } from "@/components/ui/link-preview";
 import { Icon, EvervaultCard } from "@/components/ui/evervault-card";
 
 // App's External Imports
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail } from "lucide-react";
+import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
 import team from "@/constants/team";
 
 const Team = () => {

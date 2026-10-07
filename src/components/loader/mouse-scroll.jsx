@@ -4,12 +4,12 @@
 import mouse_scroll from "../../../public/animations/mouse-scroll.json";
 
 // App's External Imports
-import Lottie from "lottie-react";
+import { Lottie } from "lottie-react";
 
 const MouseScroll = ({ className }) => {
   return (
     <div className={className}>
-      <Lottie animationData={mouse_scroll} />
+      <Lottie src={mouse_scroll} />
     </div>
   );
 };
