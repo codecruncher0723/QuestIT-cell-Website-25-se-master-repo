@@ -9,12 +9,12 @@ const secretaries = [
   {
     name: "Varun Rahatgaonkar",
     role: "Secretary",
-    phone: "123456789",
+    phone: "9372148550",
   },
   {
     name: "Tanaya Jain",
     role: "Secretary",
-    phone: "123456789",
+    phone: "9594622999",
   },
 ];
 
