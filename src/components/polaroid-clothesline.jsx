@@ -207,7 +207,6 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
       setActive(nearest_to_center());
       setInteracting(false);
     }, RESUME_AFTER);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const go_to = (column) => {
