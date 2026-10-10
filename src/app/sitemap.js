@@ -3,7 +3,8 @@ import fs from "fs";
 import path from "path";
 
 const sitemap = () => {
-  const base_url = process.env.NEXT_PUBLIC_BASE_URL;
+  const base_url =
+    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
   const fetch_last_modified_date = (page_path) => {
     const file_path = path.join(process.cwd(), "src/app", page_path);

@@ -1,5 +1,6 @@
 export const dynamic = "force-static";
 const robots = () => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   return {
     rules: [
       {
@@ -18,8 +19,8 @@ const robots = () => {
         disallow: ["/api/"],
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`,
-    host: process.env.NEXT_PUBLIC_BASE_URL,
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 };
 
