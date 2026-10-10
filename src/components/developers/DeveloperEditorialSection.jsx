@@ -3,7 +3,8 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, Mail, ChevronLeft, ChevronRight } from "lucide-react";
+import { Mail, ChevronLeft, ChevronRight } from "lucide-react";
+import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
 import developers from "@/constants/developers";
 
 const DEVELOPER_WORK_TITLES = {
