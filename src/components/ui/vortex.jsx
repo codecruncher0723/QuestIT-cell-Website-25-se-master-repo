@@ -8,7 +8,11 @@ import { motion } from "framer-motion";
 export const Vortex = (props) => {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
-  const particleCount = props.particleCount || 700;
+  const animationFrameIdRef = useRef(null);
+  const isVisibleRef = useRef(false);
+
+  // Optimized particle count: 180 provides great visuals without pegging CPU/GPU
+  const particleCount = props.particleCount || 180;
   const particlePropCount = 9;
   const particlePropsLength = particleCount * particlePropCount;
   const rangeY = props.rangeY || 100;
@@ -30,9 +34,7 @@ export const Vortex = (props) => {
   let particleProps = new Float32Array(particlePropsLength);
   let center = [0, 0];
 
-  const HALF_PI = 0.5 * Math.PI;
   const TAU = 2 * Math.PI;
-  const TO_RAD = Math.PI / 180;
   const rand = (n) => n * Math.random();
   const randRange = (n) => n - rand(2 * n);
   const fadeInOut = (t, m) => {
@@ -41,23 +43,8 @@ export const Vortex = (props) => {
   };
   const lerp = (n1, n2, speed) => (1 - speed) * n1 + speed * n2;
 
-  const setup = () => {
-    const canvas = canvasRef.current;
-    const container = containerRef.current;
-    if (canvas && container) {
-      const ctx = canvas.getContext("2d");
-
-      if (ctx) {
-        resize(canvas, ctx);
-        initParticles();
-        draw(canvas, ctx);
-      }
-    }
-  };
-
   const initParticles = () => {
     tick = 0;
-    // simplex = new SimplexNoise();
     particleProps = new Float32Array(particlePropsLength);
 
     for (let i = 0; i < particlePropsLength; i += particlePropCount) {
@@ -85,24 +72,27 @@ export const Vortex = (props) => {
   };
 
   const draw = (canvas, ctx) => {
-    tick++;
+    if (!isVisibleRef.current) return;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    tick++;
 
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawParticles(ctx);
-    renderGlow(canvas, ctx);
-    renderToScreen(canvas, ctx);
 
-    window.requestAnimationFrame(() => draw(canvas, ctx));
+    animationFrameIdRef.current = window.requestAnimationFrame(() => draw(canvas, ctx));
   };
 
   const drawParticles = (ctx) => {
+    ctx.lineCap = "round";
+    ctx.globalCompositeOperation = "lighter";
+
     for (let i = 0; i < particlePropsLength; i += particlePropCount) {
       updateParticle(i, ctx);
     }
+
+    ctx.globalCompositeOperation = "source-over";
   };
 
   const updateParticle = (i, ctx) => {
@@ -146,62 +136,99 @@ export const Vortex = (props) => {
   };
 
   const drawParticle = (x, y, x2, y2, life, ttl, radius, hue, ctx) => {
-    ctx.save();
-    ctx.lineCap = "round";
     ctx.lineWidth = radius;
     ctx.strokeStyle = `hsla(${hue},100%,60%,${fadeInOut(life, ttl)})`;
     ctx.beginPath();
     ctx.moveTo(x, y);
     ctx.lineTo(x2, y2);
     ctx.stroke();
-    ctx.closePath();
-    ctx.restore();
   };
 
   const checkBounds = (x, y, canvas) => {
     return x > canvas.width || x < 0 || y > canvas.height || y < 0;
   };
 
-  const resize = (canvas, ctx) => {
-    const { innerWidth, innerHeight } = window;
+  const resize = (canvas) => {
+    const container = containerRef.current;
+    const width = container?.clientWidth || window.innerWidth;
+    const height = container?.clientHeight || window.innerHeight;
 
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-
-    center[0] = 0.5 * canvas.width;
-    center[1] = 0.5 * canvas.height;
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width;
+      canvas.height = height;
+      center[0] = 0.5 * canvas.width;
+      center[1] = 0.5 * canvas.height;
+    }
   };
 
-  const renderGlow = (canvas, ctx) => {
-    ctx.save();
-    ctx.filter = "blur(8px) brightness(200%)";
-    ctx.globalCompositeOperation = "lighter";
-    ctx.drawImage(canvas, 0, 0);
-    ctx.restore();
+  const startAnimation = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    ctx.save();
-    ctx.filter = "blur(4px) brightness(200%)";
-    ctx.globalCompositeOperation = "lighter";
-    ctx.drawImage(canvas, 0, 0);
-    ctx.restore();
+    if (animationFrameIdRef.current) {
+      window.cancelAnimationFrame(animationFrameIdRef.current);
+    }
+    animationFrameIdRef.current = window.requestAnimationFrame(() => draw(canvas, ctx));
   };
 
-  const renderToScreen = (canvas, ctx) => {
-    ctx.save();
-    ctx.globalCompositeOperation = "lighter";
-    ctx.drawImage(canvas, 0, 0);
-    ctx.restore();
+  const stopAnimation = () => {
+    if (animationFrameIdRef.current) {
+      window.cancelAnimationFrame(animationFrameIdRef.current);
+      animationFrameIdRef.current = null;
+    }
   };
 
   useEffect(() => {
-    setup();
-    window.addEventListener("resize", () => {
-      const canvas = canvasRef.current;
-      const ctx = canvas?.getContext("2d");
-      if (canvas && ctx) {
-        resize(canvas, ctx);
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
+    resize(canvas);
+    initParticles();
+
+    // Pause when offscreen to save 100% CPU/GPU when not in view
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = isVisibleRef.current;
+        isVisibleRef.current = entry.isIntersecting;
+
+        if (entry.isIntersecting && !wasVisible) {
+          startAnimation();
+        } else if (!entry.isIntersecting) {
+          stopAnimation();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(container);
+
+    const handleResize = () => {
+      const c = canvasRef.current;
+      if (c) {
+        resize(c);
       }
-    });
+    };
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        stopAnimation();
+      } else if (isVisibleRef.current) {
+        startAnimation();
+      }
+    };
+
+    window.addEventListener("resize", handleResize, { passive: true });
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      stopAnimation();
+      observer.disconnect();
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
   }, []);
 
   return (
@@ -210,9 +237,15 @@ export const Vortex = (props) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         ref={containerRef}
-        className="absolute h-full w-full inset-0 z-0 bg-transparent flex items-center justify-center"
+        className="absolute h-full w-full inset-0 z-0 bg-transparent flex items-center justify-center overflow-hidden"
       >
-        <canvas ref={canvasRef}></canvas>
+        <canvas
+          ref={canvasRef}
+          className="w-full h-full block"
+          style={{
+            filter: "drop-shadow(0 0 12px rgba(56, 189, 248, 0.35))",
+          }}
+        />
       </motion.div>
       <div className={cn("relative z-10", props.className)}>
         {props.children}

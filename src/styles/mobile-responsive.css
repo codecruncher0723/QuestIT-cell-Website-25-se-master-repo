@@ -141,9 +141,9 @@
     max-width: 100vw !important;
   }
   
-  /* Ensure all containers respect viewport width */
-  * {
-    max-width: 100%;
+  /* Ensure main layout containers respect viewport width without universal selector penalty */
+  html, body, main, section, header, footer, div[id] {
+    max-width: 100vw;
   }
 }
 

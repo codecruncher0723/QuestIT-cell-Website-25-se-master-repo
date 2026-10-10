@@ -4,7 +4,7 @@
 import Link from "next/link";
 
 // React's Imports
-import { useId, useRef, useState, useEffect } from "react";
+import { useId, useRef, useState, useEffect, useMemo } from "react";
 
 // Confetti Import
 import confetti from "canvas-confetti";
@@ -106,6 +106,13 @@ const Events = ({ featured = false }) => {
   const ref = useRef(null);
   const [active, set_active] = useState(null);
   const [showConfetti, setShowConfetti] = useState(false);
+
+  // Memoize sorted featured events so we don't mutate imported events array or re-sort every render
+  const sortedFeaturedEvents = useMemo(() => {
+    return [...events]
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 6);
+  }, []);
 
   // Party celebration animation function
   const triggerConfetti = () => {
@@ -364,10 +371,7 @@ const Events = ({ featured = false }) => {
         </AnimatePresence>
 
         <ul className="w-full max-w-none px-4 md:px-10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start gap-4">
-          {events
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .slice(0, 6)
-            .map((event, index) => (
+          {sortedFeaturedEvents.map((event, index) => (
               active?.title === event.title ? (
                 <motion.div
                   key={index}
@@ -434,12 +438,14 @@ const Events = ({ featured = false }) => {
   }
 
   // Render events grouped by academic year (for events page)
-  const groupedEvents = groupEventsByAcademicYear(events);
-  const academicYears = Object.keys(groupedEvents).sort((a, b) => {
-    const yearA = parseInt(a.split('-')[0]);
-    const yearB = parseInt(b.split('-')[0]);
-    return yearB - yearA; // Sort in descending order (newest first)
-  });
+  const groupedEvents = useMemo(() => groupEventsByAcademicYear(events), []);
+  const academicYears = useMemo(() => {
+    return Object.keys(groupedEvents).sort((a, b) => {
+      const yearA = parseInt(a.split('-')[0]);
+      const yearB = parseInt(b.split('-')[0]);
+      return yearB - yearA; // Sort in descending order (newest first)
+    });
+  }, [groupedEvents]);
 
   // Track which sections are in view for animation
   const [visibleSections, setVisibleSections] = useState({});

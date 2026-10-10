@@ -11,17 +11,28 @@ export const HeroHighlight = ({
 }) => {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
+  const rectRef = React.useRef(null);
+
+  function handleMouseEnter({ currentTarget }) {
+    if (currentTarget) {
+      rectRef.current = currentTarget.getBoundingClientRect();
+    }
+  }
 
   function handleMouseMove({ currentTarget, clientX, clientY }) {
-    if (!currentTarget) return;
-    let { left, top } = currentTarget.getBoundingClientRect();
-
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    if (!rectRef.current && currentTarget) {
+      rectRef.current = currentTarget.getBoundingClientRect();
+    }
+    if (rectRef.current) {
+      mouseX.set(clientX - rectRef.current.left);
+      mouseY.set(clientY - rectRef.current.top);
+    }
   }
+
   return (
     <div
       id={id}
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       className={cn(
         containerClassName,

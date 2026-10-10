@@ -23,8 +23,8 @@ export const LinkPreview = ({
   isStatic = false,
   imageSrc = "",
 }) => {
-  let src;
-  if (!isStatic) {
+  const src = React.useMemo(() => {
+    if (isStatic) return imageSrc;
     const params = encode({
       url,
       screenshot: true,
@@ -36,18 +36,10 @@ export const LinkPreview = ({
       "viewport.width": width * 3,
       "viewport.height": height * 3,
     });
-    src = `https://api.microlink.io/?${params}`;
-  } else {
-    src = imageSrc;
-  }
+    return `https://api.microlink.io/?${params}`;
+  }, [isStatic, imageSrc, url, width, height]);
 
   const [isOpen, setOpen] = React.useState(false);
-
-  const [isMounted, setIsMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const springConfig = { stiffness: 100, damping: 15 };
   const x = useMotionValue(0);
@@ -55,95 +47,78 @@ export const LinkPreview = ({
   const translateX = useSpring(x, springConfig);
 
   const handleMouseMove = (event) => {
-    const targetRect = event.target.getBoundingClientRect();
+    const targetRect = event.currentTarget.getBoundingClientRect();
     const eventOffsetX = event.clientX - targetRect.left;
-    const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2; // Reduce the effect to make it subtle
+    const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2;
     x.set(offsetFromCenter);
   };
 
   return (
-    <>
-      {isMounted ? (
-        <div className="hidden">
-          <Image
-            src={src}
-            width={width}
-            height={height}
-            quality={quality}
-            layout={layout}
-            priority={true}
-            alt="hidden image"
-          />
-        </div>
-      ) : null}
-      <HoverCardPrimitive.Root
-        openDelay={50}
-        closeDelay={100}
-        onOpenChange={(open) => {
-          setOpen(open);
-        }}
+    <HoverCardPrimitive.Root
+      openDelay={100}
+      closeDelay={100}
+      onOpenChange={(open) => {
+        setOpen(open);
+      }}
+    >
+      <HoverCardPrimitive.Trigger
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        onMouseMove={handleMouseMove}
+        className={cn("text-black dark:text-white", className)}
       >
-        <HoverCardPrimitive.Trigger
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          onMouseMove={handleMouseMove}
-          className={cn("text-black dark:text-white", className)}
-        >
-          {children}
-        </HoverCardPrimitive.Trigger>
+        {children}
+      </HoverCardPrimitive.Trigger>
 
-        <HoverCardPrimitive.Portal>
-          <HoverCardPrimitive.Content
-            className="[transform-origin:var(--radix-hover-card-content-transform-origin)] z-[9999]"
-            side="top"
-            align="center"
-            sideOffset={10}
-          >
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.6 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  transition: {
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20,
-                  },
-                }}
-                exit={{ opacity: 0, y: 20, scale: 0.6 }}
-                className="shadow-xl rounded-xl"
-                style={{
-                  x: translateX,
-                }}
+      <HoverCardPrimitive.Portal>
+        <HoverCardPrimitive.Content
+          className="[transform-origin:var(--radix-hover-card-content-transform-origin)] z-[9999]"
+          side="top"
+          align="center"
+          sideOffset={10}
+        >
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.6 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                },
+              }}
+              exit={{ opacity: 0, y: 20, scale: 0.6 }}
+              className="shadow-xl rounded-xl"
+              style={{
+                x: translateX,
+              }}
+            >
+              <Link
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: 0 }}
+                className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
               >
-                <Link
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: 0 }}
-                  className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
-                >
-                  <Image
-                    src={isStatic ? imageSrc : src}
-                    width={width}
-                    height={height}
-                    quality={quality}
-                    layout={layout}
-                    priority={true}
-                    className="rounded-lg"
-                    alt="preview image"
-                  />
-                </Link>
-              </motion.div>
-            )}
-          </AnimatePresence>
-          </HoverCardPrimitive.Content>
-        </HoverCardPrimitive.Portal>
-      </HoverCardPrimitive.Root>
-    </>
+                <Image
+                  src={src}
+                  width={width}
+                  height={height}
+                  quality={quality}
+                  className="rounded-lg"
+                  alt="preview image"
+                />
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        </HoverCardPrimitive.Content>
+      </HoverCardPrimitive.Portal>
+    </HoverCardPrimitive.Root>
   );
 };
