@@ -17,3 +17,4 @@ public/sw.js
 public/workbox-*.js
 /out
 .vercel
+.DS_Store

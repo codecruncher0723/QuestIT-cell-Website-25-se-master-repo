@@ -5,7 +5,7 @@ import { useMotionTemplate, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-export const EvervaultCard = ({ image, className }) => {
+export const EvervaultCard = ({ image, className, zoom = false }) => {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
 
@@ -41,14 +41,23 @@ export const EvervaultCard = ({ image, className }) => {
           mouseY={mouseY}
           randomString={randomString}
         />
-        <div className="relative flex items-center justify-center">
+        <div
+          className={cn(
+            "relative flex items-center justify-center",
+            zoom && "h-52 w-52 rounded-2xl overflow-hidden"
+          )}
+        >
           <Image
             src={image}
             width={100}
             unoptimized
             height={100}
             alt="Team Member Image"
-            className="relative h-52 w-52 rounded-2xl flex items-center justify-center text-white font-bold text-4xl"
+            className={cn(
+              "relative h-52 w-52 rounded-2xl flex items-center justify-center text-white font-bold text-4xl",
+              zoom &&
+                "transition-transform duration-500 ease-out group-hover/card:scale-110 motion-reduce:transition-none motion-reduce:group-hover/card:scale-100"
+            )}
           />
         </div>
       </div>

@@ -13,13 +13,24 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { FlipWords } from "@/components/ui/flip-words";
-import { LinkPreview } from "@/components/ui/link-preview";
 import { Icon, EvervaultCard } from "@/components/ui/evervault-card";
+import { PolaroidClothesline } from "@/components/polaroid-clothesline";
 
 // App's External Imports
+import { motion, MotionConfig } from "framer-motion";
 import { Mail } from "lucide-react";
 import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
 import team from "@/constants/team";
+
+// Only the current council gets the card animations
+const CURRENT_COUNCIL = "Quest IT Council 2026-27";
+
+// Cards fade and slide up one after another when the dropdown opens
+const card_entrance = (index) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.4, ease: "easeOut", delay: Math.min(index, 8) * 0.06 },
+});
 
 const Team = () => {
   const accordion_ref = useRef({});
@@ -63,6 +74,7 @@ const Team = () => {
   };
 
   return (
+    <MotionConfig reducedMotion="user">
     <div
       ref={container_ref}
       className="w-full max-w-none px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto"
@@ -109,6 +121,9 @@ const Team = () => {
                         <AccordionTrigger className="team-sub-accordion-trigger">{subTitle}</AccordionTrigger>
 
                         <AccordionContent className="py-8 relative z-10">
+                          {value === CURRENT_COUNCIL ? (
+                            <PolaroidClothesline members={subMembers} title={subTitle} subtitle={title} />
+                          ) : (
                           <div className="flex flex-wrap justify-center gap-10 w-full max-w-none mx-auto team-card-container-mobile">
                             {subMembers
                               .sort((a, b) => a.name.localeCompare(b.name))
@@ -124,8 +139,9 @@ const Team = () => {
                                   },
                                   memberIndex
                                 ) => (
-                                  <div
+                                  <motion.div
                                     key={memberIndex}
+                                    {...(value === CURRENT_COUNCIL ? card_entrance(memberIndex) : {})}
                                     className="border border-white/[0.2] flex flex-col items-start w-full max-w-[17rem] sm:max-w-[19rem] md:max-w-[22rem] mx-auto p-4 relative h-[30rem]"
                                   >
                                     <Icon className="absolute h-6 w-6 -top-3 -left-3 text-white" />
@@ -133,45 +149,50 @@ const Team = () => {
                                     <Icon className="absolute h-6 w-6 -top-3 -right-3 text-white" />
                                     <Icon className="absolute h-6 w-6 -bottom-3 -right-3 text-white" />
 
-                                    <EvervaultCard image={image} />
+                                    <EvervaultCard image={image} zoom={value === CURRENT_COUNCIL} />
 
                                     <h2 className="text-white mt-4 text-lg font-semibold">
                                       {name}
                                     </h2>
 
-                                    <p className="text-sm absolute right-[1.75rem] border font-light border-white/[0.2] rounded-full mt-4 text-white px-2 py-1 team-designation-mobile">
+                                    <p className={`${value === CURRENT_COUNCIL ? "text-base team-designation-current" : "text-sm"} absolute right-[1.75rem] border font-light border-white/[0.2] rounded-full mt-4 text-white px-2 py-1 team-designation-mobile`}>
                                       {designation}
                                     </p>
 
-                                    <div className="mt-4 flex gap-2">
+                                    <div className="mt-4 flex items-center divide-x divide-white/20">
                                       <Link
                                         aria-label="Email"
                                         href={`mailto:${email}`}
-                                        className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                        className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                       >
-                                        <Mail className="h-4 w-4 transition text-white" />
+                                        <Mail className="size-[22px]" />
                                       </Link>
 
-                                      <LinkPreview
-                                        url={github}
+                                      <a
+                                        href={github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         aria-label="GitHub"
-                                        className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                        className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                       >
-                                        <Github className="h-4 w-4 transition text-white" />
-                                      </LinkPreview>
+                                        <Github className="size-[22px]" />
+                                      </a>
 
-                                      <LinkPreview
-                                        url={linkedin}
+                                      <a
+                                        href={linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         aria-label="LinkedIn"
-                                        className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                        className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                       >
-                                        <Linkedin className="h-4 w-4 transition text-white" />
-                                      </LinkPreview>
+                                        <Linkedin className="size-[22px]" />
+                                      </a>
                                     </div>
-                                  </div>
+                                  </motion.div>
                                 )
                               )}
                           </div>
+                          )}
                         </AccordionContent>
                       </AccordionItem>
                     ))}
@@ -217,32 +238,36 @@ const Team = () => {
                                 {designation}
                               </p>
 
-                              <div className="mt-4 flex gap-2">
+                              <div className="mt-4 flex items-center divide-x divide-white/20">
                                 <Link
                                   aria-label="Email"
                                   href={`mailto:${email}`}
-                                  className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                  className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                 >
-                                  <Mail className="h-4 w-4 transition text-white" />
+                                  <Mail className="size-[22px]" />
                                 </Link>
 
                                 {value != "Faculty In-Charges" && (
-                                  <LinkPreview
-                                    url={github}
+                                  <a
+                                    href={github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     aria-label="GitHub"
-                                    className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                    className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                   >
-                                    <Github className="h-4 w-4 transition text-white" />
-                                  </LinkPreview>
+                                    <Github className="size-[22px]" />
+                                  </a>
                                 )}
 
-                                <LinkPreview
-                                  url={linkedin}
+                                <a
+                                  href={linkedin}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                   aria-label="LinkedIn"
-                                  className="inline-flex justify-center items-center size-8 text-sm font-semibold rounded-lg border border-neutral-700 text-neutral-400 hover:bg-neutral-700 focus:outline-none focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
+                                  className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                 >
-                                  <Linkedin className="h-4 w-4 transition text-white" />
-                                </LinkPreview>
+                                  <Linkedin className="size-[22px]" />
+                                </a>
                               </div>
                             </div>
                           )
@@ -259,6 +284,7 @@ const Team = () => {
           ))}
         </Accordion>
     </div>
+    </MotionConfig>
   );
 };
 
