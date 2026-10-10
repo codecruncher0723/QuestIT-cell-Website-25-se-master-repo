@@ -15,22 +15,37 @@ import { ChevronDown, Menu, X, ExternalLink } from "lucide-react";
 
 const Header = () => {
   const [is_sticky, set_is_sticky] = useState(false);
+  const [is_hidden, set_is_hidden] = useState(false);
   const [is_sidebar_open, set_is_sidebar_open] = useState(false);
   const [open_dropdown, set_open_dropdown] = useState(null);
 
-  const handle_menu_sticky = () => {
-    if (window.scrollY >= 80) {
-      set_is_sticky(true);
-    } else {
-      set_is_sticky(false);
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", handle_menu_sticky);
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Make sticky once scrolled past top threshold
+      if (currentScrollY >= 60) {
+        set_is_sticky(true);
+      } else {
+        set_is_sticky(false);
+      }
+
+      // Hide/push back navbar when scrolling down, show when scrolling up
+      if (currentScrollY > 70 && currentScrollY > lastScrollY + 4) {
+        set_is_hidden(true);
+      } else if (currentScrollY < lastScrollY - 4 || currentScrollY <= 30) {
+        set_is_hidden(false);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", handle_menu_sticky);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -51,10 +66,15 @@ const Header = () => {
   return (
     <>
       <header
-        className={`flex left-0 top-0 w-full items-center z-[10000] ${is_sticky
-          ? "fixed w-full border-b py-2 backdrop-blur-[5px] transition bg-transparent"
-          : "absolute bg-black py-4"
-          }`}
+        className={`flex left-0 top-0 w-full items-center z-[10000] transition-all duration-300 ease-in-out ${
+          is_hidden && !is_sidebar_open
+            ? "-translate-y-full opacity-0 pointer-events-none"
+            : "translate-y-0 opacity-100"
+        } ${
+          is_sticky
+            ? "fixed w-full border-b border-white/10 py-2 backdrop-blur-[12px] bg-black/85 shadow-[0_4px_25px_rgba(0,0,0,0.8)]"
+            : "absolute bg-black py-4"
+        }`}
       >
         <div className="w-full px-4 md:px-8 lg:px-12">
           <div className="relative w-full flex items-center justify-between min-h-[60px]">

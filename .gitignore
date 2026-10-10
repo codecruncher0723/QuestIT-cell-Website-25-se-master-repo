@@ -18,3 +18,8 @@ public/workbox-*.js
 /out
 .vercel
 .DS_Store
+
+# Local backups
+public/images/gallery-images/diagonal_images/original_backup/
+public/images/old_logos/
+src/app/0ld-favicon.ico

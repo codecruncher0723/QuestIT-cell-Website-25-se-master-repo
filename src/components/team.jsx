@@ -162,7 +162,8 @@ const Team = () => {
                                     <div className="mt-4 flex items-center divide-x divide-white/20">
                                       <Link
                                         aria-label="Email"
-                                        href={`mailto:${email}`}
+                                        href={`mailto:${email}?subject=${encodeURIComponent(`Quest-IT Inquiry - ${name}`)}`}
+                                        title={`Send email draft to ${name}`}
                                         className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                       >
                                         <Mail className="size-[22px]" />
@@ -241,7 +242,8 @@ const Team = () => {
                               <div className="mt-4 flex items-center divide-x divide-white/20">
                                 <Link
                                   aria-label="Email"
-                                  href={`mailto:${email}`}
+                                  href={`mailto:${email}?subject=${encodeURIComponent(`Quest-IT Inquiry - ${name}`)}`}
+                                  title={`Send email draft to ${name}`}
                                   className="inline-flex justify-center items-center h-6 px-3 first:pl-0 text-white transition hover:text-cyan-300 focus:outline-none focus-visible:text-cyan-300"
                                 >
                                   <Mail className="size-[22px]" />

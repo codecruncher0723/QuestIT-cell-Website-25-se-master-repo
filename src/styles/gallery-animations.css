@@ -211,3 +211,17 @@ body {
     transform: scale(0.95);
   }
 }
+
+/* Eradicate browser focus outlines and tap highlights on interactive memory cards */
+[role="button"],
+.group,
+button {
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+[role="button"]:focus,
+[role="button"]:focus-visible,
+[role="button"]:active {
+  outline: none !important;
+  box-shadow: none;
+}
