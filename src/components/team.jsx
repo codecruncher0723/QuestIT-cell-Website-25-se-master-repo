@@ -25,6 +25,9 @@ import team from "@/constants/team";
 // Only the current council gets the card animations
 const CURRENT_COUNCIL = "Quest IT Council 2026-27";
 
+// Councils shown as the fairy-light polaroid clothesline
+const CLOTHESLINE_COUNCILS = [CURRENT_COUNCIL, "Quest IT Council 2025-26"];
+
 // Cards fade and slide up one after another when the dropdown opens
 const card_entrance = (index) => ({
   initial: { opacity: 0, y: 24 },
@@ -121,7 +124,7 @@ const Team = () => {
                         <AccordionTrigger className="team-sub-accordion-trigger">{subTitle}</AccordionTrigger>
 
                         <AccordionContent className="py-8 relative z-10">
-                          {value === CURRENT_COUNCIL ? (
+                          {CLOTHESLINE_COUNCILS.includes(value) ? (
                             <PolaroidClothesline members={subMembers} title={subTitle} subtitle={title} />
                           ) : (
                           <div className="flex flex-wrap justify-center gap-10 w-full max-w-none mx-auto team-card-container-mobile">
