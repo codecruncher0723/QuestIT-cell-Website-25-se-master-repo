@@ -37,6 +37,10 @@ const rope_y = (t) => ROPE_TOP + 4 * ROPE_SAG * t * (1 - t);
 // How many two-row strips are open; while switching TE -> SE both exist for a moment
 let open_two_row_strips = 0;
 
+// How long after any strip opens to ignore the page's own movement (ms)
+const OPEN_SETTLE_TIME = 1200;
+let last_strip_opened_at = 0;
+
 // Horizontal centre of a polaroid, measured from the visible left edge of the strip
 const center_in_track = (track, card) => {
   const card_rect = card.getBoundingClientRect();
@@ -156,9 +160,18 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
 
     const body = document.body;
     let last_y = window.scrollY;
+    last_strip_opened_at = performance.now();
 
     const on_scroll = () => {
       const y = window.scrollY;
+
+      // Right after opening, the page moves by itself (the section above closes and the page
+      // scrolls this one to the top), so don't let that bring the menu bar back
+      if (performance.now() - last_strip_opened_at < OPEN_SETTLE_TIME) {
+        last_y = y;
+        return;
+      }
+
       if (y > last_y + 4 && y > 150) body.dataset.menuHidden = "true";
       else if (y < last_y - 4) delete body.dataset.menuHidden;
       last_y = y;
@@ -166,6 +179,8 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
 
     open_two_row_strips += 1;
     body.dataset.clotheslineOpen = "true";
+    // The section is scrolled to the top of the screen where the menu bar sits, so start with it hidden
+    body.dataset.menuHidden = "true";
     window.addEventListener("scroll", on_scroll, { passive: true });
 
     return () => {
