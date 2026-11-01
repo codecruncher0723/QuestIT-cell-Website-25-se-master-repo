@@ -238,3 +238,9 @@ body[data-clothesline-open] header {
 body[data-clothesline-open][data-menu-hidden] header {
   transform: translateY(-100%);
 }
+
+/* The polaroid strip is meant to be wider than the screen. Tailwind 4 utilities (max-w-none) sit in a
+   cascade layer, so this unlayered rule is needed to beat the mobile "* { max-width: 100% }" rule */
+.polaroid-clothesline * {
+  max-width: none;
+}

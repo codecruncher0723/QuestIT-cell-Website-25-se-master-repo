@@ -368,7 +368,7 @@ const PolaroidClothesline = ({ members, title, subtitle }) => {
   );
 
   return (
-    <div className="relative w-full">
+    <div className="polaroid-clothesline relative w-full">
       <button
         type="button"
         aria-label="Previous members"
