@@ -11,7 +11,7 @@ export default function GalleryLayout({ children }) {
             "name": "Quest-IT Gallery",
             "description": "Interactive gallery showcasing Quest-IT memories and events",
             "url": "https://yourdomain.com/gallery",
-            "image": "https://yourdomain.com/images/logo.png",
+            "image": "https://yourdomain.com/images/logo.webp",
             "author": {
               "@type": "Organization",
               "name": "Quest-IT",

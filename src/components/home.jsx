@@ -44,12 +44,14 @@ const Home = () => {
           alt="Genesis 2.0 Banner"
           width={1920}
           height={1080}
+          sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover object-right md:object-center block m-0 p-0"
           style={{
             maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
             WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
           }}
           priority
+          fetchPriority="high"
         />
 
         <div className="relative z-10 flex flex-col justify-center w-full px-6 md:px-12 lg:px-24 xl:px-32 pt-[5%]">
@@ -64,12 +66,12 @@ const Home = () => {
             </p>
 
             <Image
-              src="/images/Genesis2.0logo.webp"
+              src="/images/Genesis2.0logo-600.webp"
               alt="Genesis 2.0"
-              width={1000}
-              height={500}
+              width={600}
+              height={338}
               className="w-full max-w-[280px] md:max-w-[380px] lg:max-w-[500px] h-auto mb-6 drop-shadow-lg"
-              priority
+              loading="lazy"
             />
 
             <p className="text-sm md:text-base text-gray-300 mb-8 leading-relaxed max-w-xl">

@@ -10,7 +10,7 @@ const StructuredData = () => {
     name: "QuestIT - IT Cell of VESIT",
     alternateName: ["QuestIT", "Quest IT VESIT", "VESIT IT Cell"],
     url: process.env.NEXT_PUBLIC_BASE_URL || "https://questit-cell-website.vercel.app",
-    logo: `${process.env.NEXT_PUBLIC_BASE_URL || "https://questit-cell-website.vercel.app"}/images/logo.png`,
+    logo: `${process.env.NEXT_PUBLIC_BASE_URL || "https://questit-cell-website.vercel.app"}/images/logo.webp`,
     description: "Official IT Cell of VES Institute of Technology, Mumbai. We organize technical events, workshops, hackathons, and competitions for students.",
     foundingDate: "2000",
     address: {

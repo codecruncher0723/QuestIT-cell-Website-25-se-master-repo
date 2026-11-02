@@ -12,21 +12,27 @@ import { FaGithub as Github, FaLinkedin as Linkedin, FaInstagram as Instagram } 
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-900">
-      <div className="mx-auto max-w-5xl px-4 pt-4 md:pt-0 pb-44 lg:pb-16 sm:px-6 lg:px-8">
-        <Link href="/#home">
+    <footer className="relative z-10 clear-both block w-full shrink-0 overflow-hidden bg-neutral-900">
+      <div
+        className="mx-auto flex w-full max-w-6xl flex-col items-center px-4 sm:px-6 lg:px-8"
+        style={{ paddingBlock: "clamp(1.5rem, 4vw, 3rem)" }}
+      >
+        <Link
+          href="/#home"
+          className="block w-full"
+          style={{ maxWidth: "clamp(180px, 28vw, 460px)" }}
+        >
           <Image
-            priority
-            width={0}
-            height={0}
-            unoptimized
+            width={460}
+            height={242}
+            loading="lazy"
             alt="Footer Icon"
-            src="/images/logo.png"
-            className="w-full md:mx-auto md:w-1/2"
+            src="/images/logo-460.webp"
+            className="h-auto w-full"
           />
         </Link>
 
-        <ul className="md:-mt-6 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
+        <ul className="mt-[clamp(1rem,2.5vw,1.5rem)] flex w-full flex-wrap items-center justify-center gap-x-[clamp(1rem,3vw,3rem)] gap-y-2 text-center text-sm sm:text-base">
           {menu.map(({ name, path, dropdown, external }, index) => (
             <li key={index} className="relative group">
               {dropdown ? (
@@ -68,8 +74,8 @@ const Footer = () => {
 
         </ul>
 
-        <ul className="mt-12 flex justify-center gap-6 md:gap-8 footer-list-mobile">
-          <li className="text-[#C7C7C7]">
+        <ul className="mt-[clamp(1.25rem,3vw,2.5rem)] flex w-full flex-wrap items-center justify-center gap-x-[clamp(1rem,2.5vw,2rem)] gap-y-3 px-0 text-center text-sm sm:text-base">
+          <li className="basis-full text-[#C7C7C7] sm:basis-auto">
             &copy; {fetch_current_year()}{" "}
             <Link href="/#home" className="hover:!text-[#00A3FF] transition">
               QuestIT

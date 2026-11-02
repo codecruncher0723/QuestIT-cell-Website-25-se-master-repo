@@ -13,7 +13,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Calendar, Layers, Clock, Info } from "lucide-react";
+import { Sparkles, Calendar, Layers, Info } from "lucide-react";
 
 /**
  * Custom Tooltip for Event Access Split Chart
@@ -49,8 +49,8 @@ const CustomTooltip = ({ active, payload, activeYear }) => {
           {data.isUpcoming ? (
             <div className="mt-2 pt-1.5 border-t border-neutral-800/60 flex items-center justify-between text-cyan-300 font-medium text-[11px]">
               <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                1 event — Upcoming
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                1 event — Completed
               </span>
               <span className="px-1.5 py-0.5 rounded bg-cyan-950/90 border border-cyan-500/40 text-[9px] font-mono font-semibold uppercase">
                 2026–27
@@ -152,7 +152,7 @@ const EventsSplitChart = () => {
       </div>
 
       {/* Quick Summary Pill Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 my-4 px-3 py-2 bg-neutral-950/40 rounded-xl border border-neutral-800/40 text-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 my-4 px-3 py-2 bg-neutral-950/40 rounded-xl border border-neutral-800/40 text-xs">
         <div className="flex items-center gap-2 text-neutral-300 font-medium">
           <span className="text-neutral-500">Total:</span>
           <span className="px-2 py-0.5 rounded-full bg-neutral-800 text-neutral-100 font-mono font-bold text-xs border border-neutral-700/50">
@@ -161,7 +161,7 @@ const EventsSplitChart = () => {
         </div>
 
         {/* Indicator Legend Items */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           {currentData.map((item) => {
             const isHovered = hoveredCategory === item.category;
             const isDimmed = hoveredCategory && !isHovered;
@@ -189,13 +189,6 @@ const EventsSplitChart = () => {
                 <span className="font-mono text-neutral-100 font-bold text-[11px]">
                   {item.events}
                 </span>
-
-                {item.isUpcoming && (
-                  <span className="inline-flex items-center gap-1 px-1.5 py-0.2 text-[9px] font-bold rounded-full bg-cyan-950/90 text-cyan-300 border border-cyan-500/40 ml-0.5 shadow-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                    UPCOMING
-                  </span>
-                )}
               </button>
             );
           })}
@@ -246,7 +239,6 @@ const EventsSplitChart = () => {
                         fill="#22D3EE"
                         className="text-[9px] font-mono font-semibold uppercase tracking-wider"
                       >
-                        (Upcoming)
                       </text>
                     )}
                   </g>
@@ -317,11 +309,6 @@ const EventsSplitChart = () => {
                 <span className="font-semibold text-neutral-200">
                   {activeItemDetails.category} Events
                 </span>
-                {activeItemDetails.isUpcoming && (
-                  <span className="px-1.5 py-0.2 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/40 text-[9px] font-bold">
-                    UPCOMING
-                  </span>
-                )}
               </div>
               <div className="flex items-center gap-3 font-mono text-neutral-300">
                 <span>
@@ -337,17 +324,11 @@ const EventsSplitChart = () => {
               </div>
             </>
           ) : (
-            <div className="flex items-center justify-between w-full text-neutral-400 text-[11px]">
+            <div className="flex items-center justify-center w-full text-neutral-400 text-[11px]">
               <span className="flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400/80" />
                 <span>Balanced event curation across technical and core domains</span>
               </span>
-              {activeYear === "2026-27" && (
-                <span className="text-cyan-400 font-medium flex items-center gap-1">
-                  <Clock className="w-3 h-3 text-cyan-400" />
-                  Hackathon 2026–27 Scheduled
-                </span>
-              )}
             </div>
           )}
         </motion.div>

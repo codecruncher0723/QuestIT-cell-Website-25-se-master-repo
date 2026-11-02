@@ -21,7 +21,7 @@ const winners = [
     name: "Snehansu Deo",
     email: "2025.snehansu.deo@ves.ac.in",
     link: "https://cosmo-os-eight.vercel.app/",
-    thumbnail: "/images/vibeWQuest_photos/thumbnail_1.png",
+    thumbnail: "/images/vibeWQuest_photos/thumbnail_1.webp",
     description: "Unique UI inspired by Human Interface Guidelines with technical distinctiveness.",
     color: "from-yellow-400 to-amber-600",
     shadow: "shadow-yellow-500/50",
@@ -32,7 +32,7 @@ const winners = [
     name: "Hardik Verma",
     email: "ihardiks.1711@gmail.com",
     link: "https://cosmossos.vercel.app/",
-    thumbnail: "/images/vibeWQuest_photos/thumbnail_2.png",
+    thumbnail: "/images/vibeWQuest_photos/thumbnail_2.webp",
     description: "Simple UI with properly working functionalities and integrated music system.",
     color: "from-gray-300 to-gray-500",
     shadow: "shadow-gray-400/50",
@@ -43,7 +43,7 @@ const winners = [
     name: "Soham Kadam",
     email: "2025.soham.kadam@ves.ac.in",
     link: "https://cosmos-5kpc-eta.vercel.app/",
-    thumbnail: "/images/vibeWQuest_photos/thumbnail_3.png",
+    thumbnail: "/images/vibeWQuest_photos/thumbnail_3.webp",
     description: "Proper layout with advanced AI chatbot integration for intelligent interactions.",
     color: "from-orange-400 to-amber-700",
     shadow: "shadow-orange-500/50",
@@ -128,10 +128,11 @@ const VibeWQuestWinners = () => {
 
           <div className="relative w-full flex justify-center mb-8 px-4">
             <Image
-              src="/images/vibeWQuest_photos/vibeWquest_logo.png"
+              src="/images/vibeWQuest_photos/vibeWquest_logo.webp"
               alt="Vibe W Quest Logo"
-              width={800}
-              height={200}
+              width={858}
+              height={135}
+              sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, (max-width: 1024px) 450px, (max-width: 1280px) 550px, 650px"
               className="w-full max-w-[280px] sm:max-w-[350px] md:max-w-[450px] lg:max-w-[550px] xl:max-w-[650px] h-auto object-contain"
               priority
             />

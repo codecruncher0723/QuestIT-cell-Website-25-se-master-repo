@@ -38,7 +38,7 @@ const LogoSection = () => {
         <motion.div
           className="relative z-20 flex items-center justify-center"
           layout
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Logo Badge Container (Starts very small -> grows -> glows temporarily -> glow fades after gallery appears) */}
           <div className="relative z-20 shrink-0 flex items-center justify-center">
@@ -50,8 +50,8 @@ const LogoSection = () => {
                 opacity: [0, 0.95, 0.7, 0],
               }}
               transition={{
-                delay: 0.35,
-                duration: 1.3,
+                delay: 0.5,
+                duration: 2.2,
                 times: [0, 0.25, 0.65, 1],
                 ease: "easeInOut",
               }}
@@ -82,12 +82,12 @@ const LogoSection = () => {
                 ],
               }}
               transition={{
-                scale: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
-                opacity: { duration: 0.35 },
-                rotate: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+                scale: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
+                opacity: { duration: 0.8 },
+                rotate: { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
                 filter: {
-                  delay: 0.35,
-                  duration: 1.3,
+                  delay: 0.5,
+                  duration: 2.2,
                   times: [0, 0.3, 0.65, 1],
                   ease: "easeInOut",
                 },
@@ -95,7 +95,7 @@ const LogoSection = () => {
               className="relative w-[95px] h-[95px] sm:w-[130px] sm:h-[130px] md:w-[165px] md:h-[165px] lg:w-[185px] lg:h-[185px]"
             >
               <Image
-                src="/images/quest-badge-logo.png"
+                src="/images/quest-badge-logo.webp"
                 alt="QUEST IT Badge Logo"
                 fill
                 priority
@@ -110,8 +110,8 @@ const LogoSection = () => {
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "auto", opacity: 1 }}
             transition={{
-              delay: 0.75,
-              duration: 0.6,
+              delay: 1.25,
+              duration: 0.95,
               ease: [0.16, 1, 0.3, 1],
             }}
           >
@@ -120,8 +120,8 @@ const LogoSection = () => {
               initial={{ x: -80, opacity: 0, filter: "blur(6px)" }}
               animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
               transition={{
-                delay: 0.8,
-                duration: 0.55,
+                delay: 1.3,
+                duration: 0.9,
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
@@ -141,8 +141,8 @@ const LogoSection = () => {
             initial={{ y: -45, opacity: 0, filter: "blur(8px)" }}
             animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
             transition={{
-              delay: 1.4,
-              duration: 0.6,
+              delay: 2.2,
+              duration: 0.95,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="flex items-center justify-center gap-3 sm:gap-5"
@@ -163,7 +163,7 @@ const LogoSection = () => {
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.1, duration: 0.5 }}
+        transition={{ delay: 3.2, duration: 0.8 }}
         className="absolute bottom-6 sm:bottom-10 flex flex-col items-center gap-2 text-gray-400 select-none pointer-events-none"
       >
         <span className="text-[11px] sm:text-xs md:text-sm tracking-[0.25em] uppercase font-mono text-cyan-400/80">

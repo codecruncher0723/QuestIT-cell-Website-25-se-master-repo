@@ -156,7 +156,7 @@ const MembersSplitChart = () => {
       </div>
 
       {/* Quick Summary Pill Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 my-4 px-3 py-2 bg-neutral-950/40 rounded-xl border border-neutral-800/40 text-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 my-4 px-3 py-2 bg-neutral-950/40 rounded-xl border border-neutral-800/40 text-xs">
         <div className="flex items-center gap-2 text-neutral-300 font-medium">
           <span className="text-neutral-500">Total:</span>
           <span className="px-2 py-0.5 rounded-full bg-neutral-800 text-neutral-100 font-mono font-bold text-xs border border-neutral-700/50">
@@ -169,7 +169,7 @@ const MembersSplitChart = () => {
         </div>
 
         {/* Interactive Designation Key Pills */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           {currentData.map((item) => {
             const isHovered = hoveredCategory === item.category;
             const isDimmed = hoveredCategory && !isHovered;

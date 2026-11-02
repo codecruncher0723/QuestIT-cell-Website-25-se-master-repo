@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 export const LinkPreview = ({
   children,
   url,
+  "aria-label": ariaLabel,
   className,
   width = 200,
   height = 125,
@@ -66,6 +67,7 @@ export const LinkPreview = ({
         target="_blank"
         rel="noopener noreferrer"
         onMouseMove={handleMouseMove}
+        aria-label={ariaLabel}
         className={cn("text-black dark:text-white", className)}
       >
         {children}

@@ -11,7 +11,7 @@ export const metadata = {
     description: "Explore Quest-IT memories through our interactive gallery",
     images: [
       {
-        url: "/images/logo.png",
+        url: "/images/logo.webp",
         width: 1200,
         height: 630,
         alt: "Quest-IT Gallery",
@@ -23,7 +23,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Gallery | Quest-IT",
     description: "Explore Quest-IT memories through our interactive gallery",
-    images: ["/images/logo.png"],
+    images: ["/images/logo.webp"],
   },
   alternates: {
     canonical: "/gallery",

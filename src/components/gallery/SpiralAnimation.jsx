@@ -176,9 +176,7 @@ const SpiralAnimation = ({ onComplete }) => {
             >
               <div className="relative w-[110px] h-[110px] sm:w-[130px] sm:h-[130px] md:w-[150px] md:h-[150px]">
                 <Image
-                  src={`/images/gallery-images/spiral_images/spiral_${index + 1}.${
-                    [1, 2, 3, 4].includes(index + 1) ? 'jpg' : 'jpeg'
-                  }`}
+                  src={`/images/gallery-images/spiral_images/spiral_${index + 1}.webp`}
                   alt={`Spiral frame ${index + 1}`}
                   fill
                   className="object-cover rounded-lg shadow-2xl gallery-image-mobile"
@@ -206,7 +204,7 @@ const SpiralAnimation = ({ onComplete }) => {
       >
         <div className="relative w-[200px] h-[80px] md:w-[300px] md:h-[120px]">
           <Image
-            src="/images/logo.png"
+            src="/images/logo.webp"
             alt="Quest-IT Logo"
             fill
             className="object-contain"

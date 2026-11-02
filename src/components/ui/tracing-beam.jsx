@@ -32,7 +32,7 @@ export const TracingBeam = ({
 
     const updateHeight = () => {
       if (contentRef.current) {
-        setSvgHeight(contentRef.current.offsetHeight);
+        setSvgHeight(contentRef.current.getBoundingClientRect().height);
       }
     };
 
@@ -42,7 +42,7 @@ export const TracingBeam = ({
       const ro = new ResizeObserver((entries) => {
         for (const entry of entries) {
           if (entry.target === contentRef.current) {
-            setSvgHeight(entry.target.offsetHeight);
+            setSvgHeight(entry.contentRect.height);
           }
         }
       });

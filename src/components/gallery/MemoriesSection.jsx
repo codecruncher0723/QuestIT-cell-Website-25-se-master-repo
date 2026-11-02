@@ -14,18 +14,18 @@ import PhotoLightboxModal from "./PhotoLightboxModal";
 
 /* ─── Orbital Memories Exhibition Images ───────────────────────────────────── */
 const ORBITAL_IMAGES = [
-  "/images/gallery-images/Orbital/diagonal_12.jpg",
-  "/images/gallery-images/Orbital/diagonal_9.png",
-  "/images/gallery-images/Orbital/dinner-photo_1920x1080.png",
-  "/images/gallery-images/Orbital/download_1920x1080.png",
-  "/images/gallery-images/Orbital/firstmeet_1920x1080.png",
-  "/images/gallery-images/Orbital/IMG_1633_1920x1080.png",
-  "/images/gallery-images/Orbital/IMG_2522_1920x1080.png",
-  "/images/gallery-images/Orbital/IMG_2829_1920x1080.png",
-  "/images/gallery-images/Orbital/IMG_3955_1920x1080.png",
-  "/images/gallery-images/Orbital/rshb-vwq_1920x1080.png",
-  "/images/gallery-images/Orbital/shivam-bw1_1920x1080.png",
-  "/images/gallery-images/Orbital/table-2_1920x1080.png",
+  "/images/gallery-images/Orbital/diagonal_12.webp",
+  "/images/gallery-images/Orbital/diagonal_9.webp",
+  "/images/gallery-images/Orbital/dinner-photo_1920x1080.webp",
+  "/images/gallery-images/Orbital/download_1920x1080.webp",
+  "/images/gallery-images/Orbital/firstmeet_1920x1080.webp",
+  "/images/gallery-images/Orbital/IMG_1633_1920x1080.webp",
+  "/images/gallery-images/Orbital/IMG_2522_1920x1080.webp",
+  "/images/gallery-images/Orbital/IMG_2829_1920x1080.webp",
+  "/images/gallery-images/Orbital/IMG_3955_1920x1080.webp",
+  "/images/gallery-images/Orbital/rshb-vwq_1920x1080.webp",
+  "/images/gallery-images/Orbital/shivam-bw1_1920x1080.webp",
+  "/images/gallery-images/Orbital/table-2_1920x1080.webp",
 ];
 
 const INITIAL_OFFSET_INDEX = 2;
@@ -394,23 +394,20 @@ const MemoriesSection = () => {
   useEffect(() => {
     if (!stageRef.current) return;
 
-    const updateMeasurements = () => {
-      if (stageRef.current) {
+    const updateMeasurements = (entry) => {
+      if (entry) {
         setStageDimensions({
-          width: stageRef.current.clientWidth || window.innerWidth,
-          height: stageRef.current.clientHeight || window.innerHeight,
+          width: entry.contentRect.width || window.innerWidth,
+          height: entry.contentRect.height || window.innerHeight,
         });
       }
     };
 
-    updateMeasurements();
-    const observer = new ResizeObserver(updateMeasurements);
+    const observer = new ResizeObserver(([entry]) => updateMeasurements(entry));
     observer.observe(stageRef.current);
-    window.addEventListener("resize", updateMeasurements);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("resize", updateMeasurements);
     };
   }, []);
 
@@ -678,7 +675,7 @@ const MemoriesSection = () => {
             aria-hidden="true"
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none flex items-center justify-center"
             style={{
-              transform: "translate3d(-50%, -50%, -20px)",
+              transform: "translateZ(-20px)",
               zIndex: 0,
             }}
           >
@@ -694,7 +691,7 @@ const MemoriesSection = () => {
             {/* Glowing Quest Logo */}
             <div className="relative w-[180px] h-[75px] sm:w-[250px] sm:h-[105px] md:w-[400px] md:h-[160px] lg:w-[480px] lg:h-[190px] opacity-25 md:opacity-30">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt=""
                 fill
                 className="object-contain filter drop-shadow-[0_0_25px_rgba(0,212,255,0.45)]"

@@ -7,18 +7,18 @@ import PhotoLightboxModal from "./PhotoLightboxModal";
 
 /* ─── Projector Exhibition Images ──────────────────────────────────────────── */
 const PROJECTOR_IMAGES = [
-  "/images/gallery-images/projector/DSC04678_1920x1080.png",
-  "/images/gallery-images/projector/DSC04689_1920x1080.png",
-  "/images/gallery-images/projector/Faculty_grp_photo_1920x1080.png",
-  "/images/gallery-images/projector/genesis-explaination_1920x1080.png",
-  "/images/gallery-images/projector/genesis1.0_1920x1080.png",
-  "/images/gallery-images/projector/genesis_event_1920x1080.png",
-  "/images/gallery-images/projector/quest_council_faculty_pic_1920x1080.png",
-  "/images/gallery-images/projector/SIH_insider_2_1920x1080.png",
-  "/images/gallery-images/projector/sliding_1.jpg",
-  "/images/gallery-images/projector/sliding_8.jpeg",
-  "/images/gallery-images/projector/vibewquest_participants_1920x1080.png",
-  "/images/gallery-images/projector/vibwwquest_participants_1920x1080.png",
+  "/images/gallery-images/projector/DSC04678_1920x1080.webp",
+  "/images/gallery-images/projector/DSC04689_1920x1080.webp",
+  "/images/gallery-images/projector/Faculty_grp_photo_1920x1080.webp",
+  "/images/gallery-images/projector/genesis-explaination_1920x1080.webp",
+  "/images/gallery-images/projector/genesis1.0_1920x1080.webp",
+  "/images/gallery-images/projector/genesis_event_1920x1080.webp",
+  "/images/gallery-images/projector/quest_council_faculty_pic_1920x1080.webp",
+  "/images/gallery-images/projector/SIH_insider_2_1920x1080.webp",
+  "/images/gallery-images/projector/sliding_1.webp",
+  "/images/gallery-images/projector/sliding_8.webp",
+  "/images/gallery-images/projector/vibewquest_participants_1920x1080.webp",
+  "/images/gallery-images/projector/vibwwquest_participants_1920x1080.webp",
 ];
 
 /* ─── Constants & Configuration ────────────────────────────────────────────── */
@@ -80,15 +80,17 @@ const HorizontalCarousel = () => {
   /* ── Track section client width/height for 100% pixel-perfect corner alignment ── */
   useEffect(() => {
     if (!sectionRef.current) return;
-    const update = () => {
-      if (sectionRef.current) {
-        setStageWidth(sectionRef.current.clientWidth);
-        setStageHeight(sectionRef.current.clientHeight);
+    const update = (entries) => {
+      const entry = Array.isArray(entries) ? entries[0] : entries;
+      const rect = entry?.contentRect ?? entry;
+      if (rect?.width && rect?.height) {
+        setStageWidth(rect.width);
+        setStageHeight(rect.height);
       }
     };
-    update();
     const observer = new ResizeObserver(update);
     observer.observe(sectionRef.current);
+    update(sectionRef.current.getBoundingClientRect());
     return () => observer.disconnect();
   }, []);
 
@@ -495,9 +497,8 @@ const HorizontalCarousel = () => {
       onTouchEnd={handleTouchEnd}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
-        .font-bebas { font-family: 'Bebas Neue', 'Oswald', sans-serif; }
-        .font-mono-tech { font-family: 'Space Mono', monospace; }
+        .font-bebas { font-family: 'Arial Narrow', 'Arial', sans-serif; }
+        .font-mono-tech { font-family: 'Cascadia Mono', 'Consolas', monospace; }
 
         @keyframes reveal-fade {
           from { opacity: 0; }
@@ -1214,11 +1215,10 @@ const HorizontalCarousel = () => {
           3D INTERACTIVE PROJECTOR MODEL & CASSETTES
       ══════════════════════════════════════════════════════════════════════ */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 select-none"
+        className="absolute left-1/2 select-none"
         style={{
           bottom: "0px",
           width: isVertical ? "min(56vw, 240px)" : "min(56vw, 460px)",
-          transform: "translateX(-50%)",
           /* Projector is always visible from the start */
           opacity: 1,
           /* Explicit zIndex: 50 brings projector in front of bottom card (zIndex: 10) */

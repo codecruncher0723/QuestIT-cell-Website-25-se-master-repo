@@ -14,7 +14,8 @@ const DEVELOPER_WORK_TITLES = {
   "Pranav Titambe": "Backend Optimization & Dynamic Workflows",
   "Shivam Mishra": "Genesis Microsite & Subpath Routing",
   "Karthik Kotian": "Gallery & Developer Section Redesign",
-  "Avani Killekar": "Council 2026–27 & Media Standardization",
+  "Avani Killekar": "Council 2026–27 Team Section Architecture",
+  "Chaitali Rane": "Council 2026–27 Media Standardisation",
 };
 
 // Compute physical card stack transformation based on offset relative to active card
@@ -699,7 +700,7 @@ const DeveloperEditorialSection = () => {
           </div>
 
           {/* 2. 3D Hero Card Stack with 4 Fanned Background Cards, Hover Tilt & Mobile Navigation Buttons */}
-          <div className="relative w-full flex items-center justify-center mt-2 mb-1 shrink-0">
+          <div className="relative w-full flex items-center justify-center mt-1 sm:mt-2 mb-2 sm:mb-3 shrink-0">
             {/* Mobile Previous Button */}
             <button
               type="button"
@@ -728,7 +729,7 @@ const DeveloperEditorialSection = () => {
               }}
               onMouseMove={handleCardMouseMove}
               onMouseLeave={handleCardMouseLeave}
-              className="relative cursor-pointer w-[clamp(160px,46vw,205px)] h-[clamp(215px,31vh,265px)]"
+              className="relative cursor-pointer w-[clamp(150px,42vw,195px)] h-[clamp(195px,28vh,245px)]"
               style={{
                 perspective: "1000px",
                 transformStyle: "preserve-3d",
@@ -861,7 +862,7 @@ const DeveloperEditorialSection = () => {
               </span>
             </div>
 
-            <div className="relative overflow-hidden w-full h-[125px] sm:h-[135px] mt-0.5">
+            <div className="relative overflow-hidden w-full h-[165px] sm:h-[175px] mt-0.5">
               <AnimatePresence custom={direction} initial={false}>
                 <motion.div
                   key={currentDev.name}

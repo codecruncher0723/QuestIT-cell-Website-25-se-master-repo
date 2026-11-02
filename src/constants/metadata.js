@@ -31,7 +31,7 @@ const root = {
       {
         sizes: "1200x630",
         type: "image/png",
-        url: "/images/opengraph-image.png",
+        url: "/images/opengraph-image.webp",
       },
     ],
     url: "/",
@@ -107,7 +107,7 @@ const team = {
       {
         sizes: "1200x630",
         type: "image/png",
-        url: "/images/opengraph-image.png",
+        url: "/images/opengraph-image.webp",
       },
     ],
     url: "/",
@@ -170,7 +170,7 @@ const events = {
       {
         sizes: "1200x630",
         type: "image/png",
-        url: "/images/opengraph-image.png",
+        url: "/images/opengraph-image.webp",
       },
     ],
     url: "/",
@@ -233,7 +233,7 @@ const developers = {
       {
         sizes: "1200x630",
         type: "image/png",
-        url: "/images/opengraph-image.png",
+        url: "/images/opengraph-image.webp",
       },
     ],
     url: "/",
@@ -296,7 +296,7 @@ const registration = {
       {
         sizes: "1200x630",
         type: "image/png",
-        url: "/images/opengraph-image.png",
+        url: "/images/opengraph-image.webp",
       },
     ],
     url: "/registration",
@@ -350,7 +350,7 @@ const feedback = {
       {
         sizes: "1200x630",
         type: "image/png",
-        url: "/images/opengraph-image.png",
+        url: "/images/opengraph-image.webp",
       },
     ],
     url: "/feedback",

@@ -95,11 +95,11 @@ const Header = () => {
                 <Image
                   priority
                   width={240}
-                  height={80}
+                  height={126}
                   unoptimized
                   alt="Header Icon"
                   className="w-full h-auto"
-                  src="/images/logo.png"
+                  src="/images/logo-460.webp"
                 />
               </Link>
             </div>
@@ -177,7 +177,7 @@ const Header = () => {
           <div className="flex justify-between items-center mb-2">
             <div className="w-[190px]">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 width={190}
                 height={65}
                 alt="Logo"
@@ -186,6 +186,7 @@ const Header = () => {
             </div>
             <button
               onClick={() => set_is_sidebar_open(false)}
+              aria-label="Close Menu"
               className="p-2 text-gray-400 hover:text-white transition-colors"
             >
               <X size={28} />

@@ -51,7 +51,7 @@ const team = [
             email: "2023.archit.chitte@ves.ac.in",
             github: "https://github.com/architchitte",
             linkedin: "https://in.linkedin.com/in/archit-chitte-4551ba288",
-            image: "/images/team2026/beMembers/ArchitChitte.jpg",
+            image: "/images/team2026/beMembers/ArchitChitte.webp",
           },
           {
             name: "Atharva Lotankar",
@@ -59,7 +59,7 @@ const team = [
             email: "2023.atharva.lotankar@ves.ac.in",
             github: "https://www.github.com/AtharvaLotankar11",
             linkedin: "http://www.linkedin.com/in/atharva-lotankar-51824537b",
-            image: "/images/team2026/beMembers/AtharvaLotankar.jpg",
+            image: "/images/team2026/beMembers/AtharvaLotankar.webp",
           },
           {
             name: "Atharva Pingale",
@@ -67,7 +67,7 @@ const team = [
             email: "2023.atharva.pingale@ves.ac.in",
             github: "https://github.com/Atharvasp333",
             linkedin: "https://www.linkedin.com/in/atharva-pingale-25387432a/",
-            image: "/images/team2026/beMembers/AtharvaPingale.jpg",
+            image: "/images/team2026/beMembers/AtharvaPingale.webp",
           },
           {
             name: "Nupur Ghangarekar",
@@ -75,7 +75,7 @@ const team = [
             email: "2023.nupur.ghangarekar@ves.ac.in",
             github: "https://github.com/NupurGhangarekar",
             linkedin: "https://www.linkedin.com/in/nupur-ghangarekar/",
-            image: "/images/team2026/beMembers/NupurGhangarekar.jpg",
+            image: "/images/team2026/beMembers/NupurGhangarekar.webp",
           },
           {
             name: "Shravanya Andhale",
@@ -83,7 +83,7 @@ const team = [
             email: "2023.shravanya.andhale@ves.ac.in",
             github: "https://github.com/Shravanya178",
             linkedin: "https://www.linkedin.com/in/shravanya-andhale-b729a2314/",
-            image: "/images/team2026/beMembers/ShravanyaAndhale.jpg",
+            image: "/images/team2026/beMembers/ShravanyaAndhale.webp",
           },
           {
             name: "Tanaya Jain",
@@ -91,7 +91,7 @@ const team = [
             email: "2023.tanaya.jain@ves.ac.in",
             github: "https://github.com/tanaya2005",
             linkedin: "https://www.linkedin.com/in/jaintanaya",
-            image: "/images/team2026/beMembers/TanayaJain.jpg",
+            image: "/images/team2026/beMembers/TanayaJain.webp",
           },
           {
             name: "Varun Rahatgaonkar",
@@ -99,7 +99,7 @@ const team = [
             email: "2023.varun.rahatgaonkar@ves.ac.in",
             github: "https://github.com/Kingslaye-varun",
             linkedin: "http://www.linkedin.com/in/varun-rahatgaonkar-448392321",
-            image: "/images/team2026/beMembers/VarunRahatgaonkar.jpg",
+            image: "/images/team2026/beMembers/VarunRahatgaonkar.webp",
           },
         ],
       },
@@ -113,7 +113,7 @@ const team = [
             email: "2024.ankita.punjabi@ves.ac.in",
             github: "https://github.com/ankitapunjabi22",
             linkedin: "https://www.linkedin.com/in/ankita-punjabi-4b80aa375",
-            image: "/images/team2026/teMembers/AnkitaPunjabi.jpg",
+            image: "/images/team2026/teMembers/AnkitaPunjabi.webp",
           },
           {
             name: "Aryan Kadam",
@@ -121,7 +121,7 @@ const team = [
             email: "2024.aryan.kadam@ves.ac.in",
             github: "https://github.com/Aryert05",
             linkedin: "https://www.linkedin.com/in/aryan-kadam-546315325/",
-            image: "/images/team2026/teMembers/AryanKadam.jpg",
+            image: "/images/team2026/teMembers/AryanKadam.webp",
           },
           {
             name: "Ashutosh Mishra",
@@ -129,7 +129,7 @@ const team = [
             email: "2024.ashutosh.mishra@ves.ac.in",
             github: "https://github.com/Dev-Am12",
             linkedin: "https://www.linkedin.com/in/ashutosh-mishra12/",
-            image: "/images/team2026/teMembers/AshutoshMishra.jpg",
+            image: "/images/team2026/teMembers/AshutoshMishra.webp",
           },
           {
             name: "Atharva Waghmode",
@@ -137,7 +137,7 @@ const team = [
             email: "2024.atharva.waghmode@ves.ac.in",
             github: "https://github.com/wagha-builds",
             linkedin: "https://www.linkedin.com/in/atharva-waghmode-0a7573350",
-            image: "/images/team2026/teMembers/AtharvaWaghmode.jpg",
+            image: "/images/team2026/teMembers/AtharvaWaghmode.webp",
           },
           {
             name: "Ayush Lokhande",
@@ -145,7 +145,7 @@ const team = [
             email: "2024.ayush.lokhande@ves.ac.in",
             github: "https://github.com/Ayushpro45",
             linkedin: "https://www.linkedin.com/in/ayush-lokhande-33306433b/",
-            image: "/images/team2026/teMembers/AyushLokhande.jpg",
+            image: "/images/team2026/teMembers/AyushLokhande.webp",
           },
           {
             name: "Japleen Kaur Arora",
@@ -153,7 +153,7 @@ const team = [
             email: "2024.japleen.arora@ves.ac.in",
             github: "https://github.com/japleenkaurarora17",
             linkedin: "https://www.linkedin.com/in/japleen-kaur-arora-a805aa312",
-            image: "/images/team2026/teMembers/JapleenKaurArora.jpg",
+            image: "/images/team2026/teMembers/JapleenKaurArora.webp",
           },
           {
             name: "Kirteesh Rakshe",
@@ -161,7 +161,7 @@ const team = [
             email: "2024.kirteesh.rakshe@ves.ac.in",
             github: "https://github.com/kirteexh",
             linkedin: "https://www.linkedin.com/in/kirteesh-r-87617139b",
-            image: "/images/team2026/teMembers/KirteeshRakshe.jpg",
+            image: "/images/team2026/teMembers/KirteeshRakshe.webp",
           },
           {
             name: "Krishna Gavali",
@@ -169,7 +169,7 @@ const team = [
             email: "2024.krishna.gavali@ves.ac.in",
             github: "https://github.com/krishnagavali20",
             linkedin: "https://www.linkedin.com/in/krishna-gavali-962a233a8",
-            image: "/images/team2026/teMembers/KrishnaGavali.jpg",
+            image: "/images/team2026/teMembers/KrishnaGavali.webp",
           },
           {
             name: "Naina Bajaj",
@@ -177,7 +177,7 @@ const team = [
             email: "2024.naina.bajaj@ves.ac.in",
             github: "https://github.com/nainabajaj27",
             linkedin: "https://www.linkedin.com/in/naina-bajaj-a89134405",
-            image: "/images/team2026/teMembers/NainaBajaj.jpg",
+            image: "/images/team2026/teMembers/NainaBajaj.webp",
           },
           {
             name: "Om Sawlani",
@@ -185,7 +185,7 @@ const team = [
             email: "2024.om.sawlani@ves.ac.in",
             github: "https://github.com/Om23102006",
             linkedin: "https://www.linkedin.com/in/om-sawlani-4b11a2398",
-            image: "/images/team2026/teMembers/OmSawlani.jpg",
+            image: "/images/team2026/teMembers/OmSawlani.webp",
           },
           {
             name: "Parth Chavan",
@@ -193,7 +193,7 @@ const team = [
             email: "2024.parth.chavan@ves.ac.in",
             github: "https://github.com/Parth-Chavan-15",
             linkedin: "https://www.linkedin.com/in/parth-chavan-8b9260394",
-            image: "/images/team2026/teMembers/ParthChavan.jpg",
+            image: "/images/team2026/teMembers/ParthChavan.webp",
           },
           {
             name: "Pavan Wadhwa",
@@ -201,7 +201,7 @@ const team = [
             email: "2024.pavan.wadhwa@ves.ac.in",
             github: "https://github.com/pavanwadhwa2006-ai",
             linkedin: "https://www.linkedin.com/in/pavan-wadhwa-323537290",
-            image: "/images/team2026/teMembers/PavanWadhwa.jpg",
+            image: "/images/team2026/teMembers/PavanWadhwa.webp",
           },
           {
             name: "Pradnyesh Patil",
@@ -209,7 +209,7 @@ const team = [
             email: "2024.pradnyesh.patil@ves.ac.in",
             github: "https://github.com/pradsgoat7",
             linkedin: "https://www.linkedin.com/in/pradnyesh-patil-aba90a221/",
-            image: "/images/team2026/teMembers/PradnyeshPatil.jpg",
+            image: "/images/team2026/teMembers/PradnyeshPatil.webp",
           },
           {
             name: "Rushabh Gupta",
@@ -217,7 +217,7 @@ const team = [
             email: "2024.rushabh.gupta@ves.ac.in",
             github: "https://github.com/RiShBhs-Code",
             linkedin: "https://www.linkedin.com/in/rushabh-gupta-8b0119381",
-            image: "/images/team2026/teMembers/RushabhGupta.jpg",
+            image: "/images/team2026/teMembers/RushabhGupta.webp",
           },
           {
             name: "Sanjog Poojary",
@@ -225,7 +225,7 @@ const team = [
             email: "2024.sanjog.poojary@ves.ac.in",
             github: "https://github.com/Sanjog-Poojary",
             linkedin: "https://www.linkedin.com/in/sanjog-poojary-08871032a",
-            image: "/images/team2026/teMembers/SanjogPoojary.jpg",
+            image: "/images/team2026/teMembers/SanjogPoojary.webp",
           },
           {
             name: "Shivam Mishra",
@@ -233,7 +233,7 @@ const team = [
             email: "2024.shivam.mishra@ves.ac.in",
             github: "https://github.com/thetwobraincells",
             linkedin: "https://www.linkedin.com/in/shivamrpmishra/",
-            image: "/images/team2026/teMembers/ShivamMishra.jpg",
+            image: "/images/team2026/teMembers/ShivamMishra.webp",
           },
           {
             name: "Soniya Lulla",
@@ -241,7 +241,7 @@ const team = [
             email: "2024.soniya.lulla@ves.ac.in",
             github: "https://github.com/SoniyaDev",
             linkedin: "https://www.linkedin.com/in/soniya-lulla-36b072338",
-            image: "/images/team2026/teMembers/SoniyaLulla.jpg",
+            image: "/images/team2026/teMembers/SoniyaLulla.webp",
           },
           {
             name: "Tanaya Pawar",
@@ -249,7 +249,7 @@ const team = [
             email: "2024.tanaya.pawar@ves.ac.in",
             github: "https://github.com/Tangerinn",
             linkedin: "https://in.linkedin.com/in/tanaya-pawar-7420aa379",
-            image: "/images/team2026/teMembers/TanayaPawar.jpg",
+            image: "/images/team2026/teMembers/TanayaPawar.webp",
           },
         ],
       },
@@ -263,7 +263,7 @@ const team = [
             email: "2025.adit.kondlekar@ves.ac.in",
             github: "https://github.com/Adit-starter",
             linkedin: "https://www.linkedin.com/in/adit-kondlekar-380734437",
-            image: "/images/team2026/seMembers/AditKondlekar.jpg",
+            image: "/images/team2026/seMembers/AditKondlekar.webp",
           },
           {
             name: "Antara Dhavan",
@@ -271,7 +271,7 @@ const team = [
             email: "2025.antara.dhavan@ves.ac.in",
             github: "https://github.com/antara837",
             linkedin: "https://www.linkedin.com/in/antara-dhavan-04187a3ab",
-            image: "/images/team2026/seMembers/AntaraDhavan.jpg",
+            image: "/images/team2026/seMembers/AntaraDhavan.webp",
           },
           {
             name: "Anushka Chaurasia",
@@ -279,7 +279,7 @@ const team = [
             email: "2025.anushka.chaurasia@ves.ac.in",
             github: "https://github.com/anushkachaurasia087-stack",
             linkedin: "https://www.linkedin.com/in/anushka-chaurasia-916801408",
-            image: "/images/team2026/seMembers/AnushkaChaurasia.jpg",
+            image: "/images/team2026/seMembers/AnushkaChaurasia.webp",
           },
           {
             name: "Arvesh Kumbhare",
@@ -287,7 +287,7 @@ const team = [
             email: "2025.arvesh.kumbhare@ves.ac.in",
             github: "https://github.com/Arveshk",
             linkedin: "https://www.linkedin.com/in/arveshkumbhare/",
-            image: "/images/team2026/seMembers/ArveshKumbhare.jpg",
+            image: "/images/team2026/seMembers/ArveshKumbhare.webp",
           },
           {
             name: "Avani Killekar",
@@ -295,7 +295,7 @@ const team = [
             email: "2025.avani.killekar@ves.ac.in",
             github: "https://github.com/avanikillekar",
             linkedin: "https://www.linkedin.com/in/avani-killekar-4184573b8",
-            image: "/images/team2026/seMembers/AvaniKillekar.jpg",
+            image: "/images/team2026/seMembers/AvaniKillekar.webp",
           },
           {
             name: "Ayush Gaikwad",
@@ -303,7 +303,7 @@ const team = [
             email: "2025.ayush.gaikwad@ves.ac.in",
             github: "https://github.com/AyushG-789",
             linkedin: "https://www.linkedin.com/in/ayush-gaikwad-b01083386",
-            image: "/images/team2026/seMembers/AyushGaikwad.jpg",
+            image: "/images/team2026/seMembers/AyushGaikwad.webp",
           },
           {
             name: "Chaitali Rane",
@@ -311,7 +311,7 @@ const team = [
             email: "2025.chaitali.rane@ves.ac.in",
             github: "https://github.com/C172007",
             linkedin: "https://www.linkedin.com/in/chaitalirane1707",
-            image: "/images/team2026/seMembers/ChaitaliRane.jpg",
+            image: "/images/team2026/seMembers/ChaitaliRane.webp",
           },
           {
             name: "Hardik Verma",
@@ -319,7 +319,7 @@ const team = [
             email: "2025.hardik.verma@ves.ac.in",
             github: "https://github.com/xHardik",
             linkedin: "https://www.linkedin.com/in/hardik-verma-6387ab25a",
-            image: "/images/team2026/seMembers/HardikVerma.jpg",
+            image: "/images/team2026/seMembers/HardikVerma.webp",
           },
           {
             name: "Kanishka Lulla",
@@ -327,7 +327,7 @@ const team = [
             email: "2025.kanishka.lulla@ves.ac.in",
             github: "https://github.com/kanishkalulla",
             linkedin: "https://www.linkedin.com/in/kanishka-lulla-843364373",
-            image: "/images/team2026/seMembers/KanishkaLulla.jpg",
+            image: "/images/team2026/seMembers/KanishkaLulla.webp",
           },
           {
             name: "Karmanya Jakhotia",
@@ -335,7 +335,7 @@ const team = [
             email: "2025.karmanya.jakhotia@ves.ac.in",
             github: "https://github.com/Karmanya-Jakhotia",
             linkedin: "https://www.linkedin.com/in/karmanya-jakhotia-9b1420385",
-            image: "/images/team2026/seMembers/KarmanyaJakhotia.jpg",
+            image: "/images/team2026/seMembers/KarmanyaJakhotia.webp",
           },
           {
             name: "Karthik Kotian",
@@ -343,7 +343,7 @@ const team = [
             email: "2025.karthik.kotian@ves.ac.in",
             github: "https://github.com/codecruncher0723",
             linkedin: "https://www.linkedin.com/in/karthik-kotian-3aa590384",
-            image: "/images/team2026/seMembers/KarthikKotian.jpg",
+            image: "/images/team2026/seMembers/KarthikKotian.webp",
           },
           {
             name: "Manasvi Wairkar",
@@ -351,7 +351,7 @@ const team = [
             email: "2025.manasvi.wairkar@ves.ac.in",
             github: "https://github.com/manasviwairkar",
             linkedin: "https://www.linkedin.com/in/manasvi-wairkar-00724a368",
-            image: "/images/team2026/seMembers/ManasviWairkar.jpg",
+            image: "/images/team2026/seMembers/ManasviWairkar.webp",
           },
           {
             name: "Manish Awari",
@@ -359,7 +359,7 @@ const team = [
             email: "2025.manish.awari@ves.ac.in",
             github: "https://github.com/themanishawari",
             linkedin: "https://www.linkedin.com/in/manishawari/",
-            image: "/images/team2026/seMembers/ManishAwari.jpg",
+            image: "/images/team2026/seMembers/ManishAwari.webp",
           },
           {
             name: "Rajwardhan Patil",
@@ -367,7 +367,7 @@ const team = [
             email: "2025.rajwardhan.patil@ves.ac.in",
             github: "https://github.com/Rajwardhan-09",
             linkedin: "https://www.linkedin.com/in/rajwardhan-patil-829992362",
-            image: "/images/team2026/seMembers/RajwardhanPatil.jpg",
+            image: "/images/team2026/seMembers/RajwardhanPatil.webp",
           },
           {
             name: "Sachin Kumawat",
@@ -375,7 +375,7 @@ const team = [
             email: "2025.sachin.kumawat@ves.ac.in",
             github: "https://github.com/CooLHecker",
             linkedin: "https://www.linkedin.com/in/sachin-kumawat-181148363",
-            image: "/images/team2026/seMembers/SachinKumawat.jpg",
+            image: "/images/team2026/seMembers/SachinKumawat.webp",
           },
           {
             name: "Sakshi Shetty",
@@ -383,7 +383,7 @@ const team = [
             email: "2025.sakshi.shetty@ves.ac.in",
             github: "https://github.com/S-2107",
             linkedin: "https://www.linkedin.com/in/sakshi-shetty-028728440",
-            image: "/images/team2026/seMembers/SakshiShetty.jpg",
+            image: "/images/team2026/seMembers/SakshiShetty.webp",
           },
           {
             name: "Sanchita Patil",
@@ -391,7 +391,7 @@ const team = [
             email: "2025.sanchita.patil@ves.ac.in",
             github: "https://github.com/sanchitapatil02",
             linkedin: "https://www.linkedin.com/in/sanchita-patil-59149026b",
-            image: "/images/team2026/seMembers/SanchitaPatil.jpg",
+            image: "/images/team2026/seMembers/SanchitaPatil.webp",
           },
           {
             name: "Sankalp Mane",
@@ -399,7 +399,7 @@ const team = [
             email: "2025.sankalp.mane@ves.ac.in",
             github: "https://github.com/Sankymane",
             linkedin: "https://www.linkedin.com/in/sankalp-mane-53175936b",
-            image: "/images/team2026/seMembers/SankalpMane.jpg",
+            image: "/images/team2026/seMembers/SankalpMane.webp",
           },
           {
             name: "Sarra Khadse",
@@ -407,7 +407,7 @@ const team = [
             email: "2025.sarra.khadse@ves.ac.in",
             github: "https://github.com/sarrakhadse07",
             linkedin: "https://www.linkedin.com/in/sarra-khadse-0b7719386",
-            image: "/images/team2026/seMembers/SarraKhadse.jpg",
+            image: "/images/team2026/seMembers/SarraKhadse.webp",
           },
           {
             name: "Snehanshu Deo",
@@ -415,7 +415,7 @@ const team = [
             email: "2025.snehansu.deo@ves.ac.in",
             github: "https://github.com/snehanshuuu",
             linkedin: "https://www.linkedin.com/in/snehansu-deo",
-            image: "/images/team2026/seMembers/SnehanshuDeo.jpg",
+            image: "/images/team2026/seMembers/SnehanshuDeo.webp",
           },
           {
             name: "Sujoy Neogy",
@@ -423,7 +423,7 @@ const team = [
             email: "2025.neogy.sujoy@ves.ac.in",
             github: "https://github.com/sujoygoestothemoon",
             linkedin: "https://www.linkedin.com/in/sujoy-neogy-726582383",
-            image: "/images/team2026/seMembers/SujoyNeogy.jpg",
+            image: "/images/team2026/seMembers/SujoyNeogy.webp",
           },
           {
             name: "Yash Sawant",
@@ -431,7 +431,7 @@ const team = [
             email: "2025.yash.sawant@ves.ac.in",
             github: "https://github.com/yashsawant-vesit",
             linkedin: "https://www.linkedin.com/in/yash-sawant-711105362/",
-            image: "/images/team2026/seMembers/YashSawant.jpg",
+            image: "/images/team2026/seMembers/YashSawant.webp",
           },
         ],
       },
@@ -451,7 +451,7 @@ const team = [
             email: "2022.ajinkya.patil@ves.ac.in",
             github: "https://github.com/ajinkyaspatil20",
             linkedin: "https://www.linkedin.com/in/ajinkyaspatil20",
-            image: "/images/team2025/beMembers/AjinkyaPatil.png",
+            image: "/images/team2025/beMembers/AjinkyaPatil.webp",
           },
           {
             name: "Eesha Chavan",
@@ -459,7 +459,7 @@ const team = [
             email: "2022.eesha.chavan@ves.ac.in",
             github: "https://github.com/eeshachavan",
             linkedin: "https://www.linkedin.com/in/eesha-chavan",
-            image: "/images/team2025/beMembers/EeshaChavan.png",
+            image: "/images/team2025/beMembers/EeshaChavan.webp",
           },
           {
             name: "Krushikesh Shelar",
@@ -467,7 +467,7 @@ const team = [
             email: "2022.krushikesh.shelar@ves.ac.in",
             github: "https://github.com/KrushikeshS",
             linkedin: "https://in.linkedin.com/in/krushikesh-shelar",
-            image: "/images/team2025/beMembers/KrushikeshShelar.png",
+            image: "/images/team2025/beMembers/KrushikeshShelar.webp",
           },
           {
             name: "Pranav Titambe",
@@ -475,7 +475,7 @@ const team = [
             email: "2022.pranav.titambe@ves.ac.in",
             github: "https://github.com/Pranavlovescode",
             linkedin: "https://in.linkedin.com/in/pranav-titambe",
-            image: "/images/team2025/beMembers/PranavTitambe.png",
+            image: "/images/team2025/beMembers/PranavTitambe.webp",
           },
           {
             name: "Ronak Katariya",
@@ -483,7 +483,7 @@ const team = [
             email: "2022.ronak.katariya@ves.ac.in",
             github: "https://github.com/ronak03rsk",
             linkedin: "https://www.linkedin.com/in/ronak-katariya-02877b284",
-            image: "/images/team2025/beMembers/RonakKatariya.png",
+            image: "/images/team2025/beMembers/RonakKatariya.webp",
           },
           {
             name: "Sannidhi Kailaje",
@@ -491,7 +491,7 @@ const team = [
             email: "2022.sannidhi.kailaje@ves.ac.in",
             github: "https://github.com/Skailaje",
             linkedin: "https://www.linkedin.com/in/sannidhi-kailaje-011a312a4",
-            image: "/images/team2025/beMembers/SannidhiKailaje.png",
+            image: "/images/team2025/beMembers/SannidhiKailaje.webp",
           },
           {
             name: "Shravani Rasam",
@@ -499,7 +499,7 @@ const team = [
             email: "2022.shravani.rasam@ves.ac.in",
             github: "https://github.com/ShravaniR2412",
             linkedin: "https://www.linkedin.com/in/shravanirasam02",
-            image: "/images/team2025/beMembers/ShravaniRasam.png",
+            image: "/images/team2025/beMembers/ShravaniRasam.webp",
           },
         ],
       },
@@ -513,7 +513,7 @@ const team = [
             email: "2023.anish.tawade@ves.ac.in",
             github: "https://github.com/Anissh280507",
             linkedin: "https://in.linkedin.com/in/anish-tawade-53a82a1ba",
-            image: "/images/team2025/teMembers/AnishTawade.png",
+            image: "/images/team2025/teMembers/AnishTawade.webp",
           },
           {
             name: "Archit Chitte",
@@ -521,7 +521,7 @@ const team = [
             email: "2023.archit.chitte@ves.ac.in",
             github: "https://github.com/architchitte",
             linkedin: "https://in.linkedin.com/in/archit-chitte-4551ba288",
-            image: "/images/team2025/teMembers/ArchitChitte.png",
+            image: "/images/team2025/teMembers/ArchitChitte.webp",
           },
           {
             name: "Arnav Chaudhary",
@@ -529,7 +529,7 @@ const team = [
             email: "2023.arnav.chaudhary@ves.ac.in",
             github: "https://github.com/Arnavch2024",
             linkedin: "https://www.linkedin.com/in/arnav-chaudhary-2a526928b",
-            image: "/images/team2025/teMembers/ArnavChaudhary.png",
+            image: "/images/team2025/teMembers/ArnavChaudhary.webp",
           },
           {
             name: "Atharva Lotankar",
@@ -537,7 +537,7 @@ const team = [
             email: "2023.atharva.lotankar@ves.ac.in",
             github: "https://github.com/AtharvaLotankar11",
             linkedin: "https://www.linkedin.com/in/atharva-lotankar-51824537b",
-            image: "/images/team2025/teMembers/AtharvaLotankar.png",
+            image: "/images/team2025/teMembers/AtharvaLotankar.webp",
           },
           {
             name: "Atharva Pingale",
@@ -545,7 +545,7 @@ const team = [
             email: "2023.atharva.pingale@ves.ac.in",
             github: "https://github.com/Atharvasp333",
             linkedin: "https://www.linkedin.com/in/atharva-pingale-25387432a/",
-            image: "/images/team2025/teMembers/AtharvaPingale.png",
+            image: "/images/team2025/teMembers/AtharvaPingale.webp",
           },
           {
             name: "Bhavik Panjapi",
@@ -553,7 +553,7 @@ const team = [
             email: "2023.bhavik.panjapi@ves.ac.in",
             github: "https://github.com/BhavikPanjapi",
             linkedin: "https://www.linkedin.com/in/bhavik-panjapi-259b772a6/",
-            image: "/images/team2025/teMembers/BhavikPanjapi.png",
+            image: "/images/team2025/teMembers/BhavikPanjapi.webp",
           },
           {
             name: "Gargi Dhuri",
@@ -561,7 +561,7 @@ const team = [
             email: "2023.gargi.dhuri@ves.ac.in",
             github: "https://github.com/gragznotkool",
             linkedin: "https://www.linkedin.com/in/gargi-dhuri-3992aa316/",
-            image: "/images/team2025/teMembers/GargiDhuri.png",
+            image: "/images/team2025/teMembers/GargiDhuri.webp",
           },
           {
             name: "Harsh Kumar",
@@ -569,7 +569,7 @@ const team = [
             email: "2023.harsh.kumar@ves.ac.in",
             github: "https://github.com/harshre786",
             linkedin: "https://www.linkedin.com/in/harsh-kumar-5864c92a7/",
-            image: "/images/team2025/teMembers/HarshKumar.png",
+            image: "/images/team2025/teMembers/HarshKumar.webp",
           },
           {
             name: "Harshita Singh",
@@ -577,7 +577,7 @@ const team = [
             email: "2023.harshita.singh@ves.ac.in",
             github: "https://github.com/Harshita-Singh-25",
             linkedin: "https://www.linkedin.com/in/harshita-singh-3846302a4",
-            image: "/images/team2025/teMembers/HarshitaSingh.png",
+            image: "/images/team2025/teMembers/HarshitaSingh.webp",
           },
           {
             name: "Mohish Padave",
@@ -585,7 +585,7 @@ const team = [
             email: "2023.mohish.padave@ves.ac.in",
             github: "https://github.com/MohishPadave",
             linkedin: "https://www.linkedin.com/in/mohish-padave/",
-            image: "/images/team2025/teMembers/MohishPadave.png",
+            image: "/images/team2025/teMembers/MohishPadave.webp",
           },
           {
             name: "Nidhi Puthran",
@@ -593,7 +593,7 @@ const team = [
             email: "2023.nidhi.puthran@ves.ac.in",
             github: "https://github.com/nidhi0810",
             linkedin: "https://www.linkedin.com/in/nidhi-puthran-2824a9299",
-            image: "/images/team2025/teMembers/NidhiPuthran.png",
+            image: "/images/team2025/teMembers/NidhiPuthran.webp",
           },
           {
             name: "Nupur Ghangarekar",
@@ -601,7 +601,7 @@ const team = [
             email: "2023.nupur.ghangarekar@ves.ac.in",
             github: "https://github.com/NupurGhangarekar",
             linkedin: "https://www.linkedin.com/in/nupur-ghangarekar-60291b291",
-            image: "/images/team2025/teMembers/NupurGhangarekar.png",
+            image: "/images/team2025/teMembers/NupurGhangarekar.webp",
           },
           {
             name: "Shravanya Andhale",
@@ -609,7 +609,7 @@ const team = [
             email: "2023.shravanya.andhale@ves.ac.in",
             github: "https://github.com/Shravanya178",
             linkedin: "https://www.linkedin.com/in/shravanya-andhale-b729a2314",
-            image: "/images/team2025/teMembers/ShravanyaAndhale.png",
+            image: "/images/team2025/teMembers/ShravanyaAndhale.webp",
           },
           {
             name: "Tanaya Jain",
@@ -617,7 +617,7 @@ const team = [
             email: "2023.tanaya.jain@ves.ac.in",
             github: "https://github.com/tanaya2005",
             linkedin: "https://www.linkedin.com/in/jaintanaya/",
-            image: "/images/team2025/teMembers/TanayaJain.png",
+            image: "/images/team2025/teMembers/TanayaJain.webp",
           },
           {
             name: "Vaishnavi Avhad",
@@ -625,7 +625,7 @@ const team = [
             email: "2023.vaishnavi.avhad@ves.ac.in",
             github: "https://github.com/Vaishnavii-01",
             linkedin: "https://www.linkedin.com/in/vaishnavi-avhad-056969330",
-            image: "/images/team2025/teMembers/VaishnaviAvhad.png",
+            image: "/images/team2025/teMembers/VaishnaviAvhad.webp",
           },
           {
             name: "Varun Rahatgaonkar",
@@ -633,7 +633,7 @@ const team = [
             email: "2023.varun.rahatgaonkar@ves.ac.in",
             github: "https://github.com/kingslaye-varun",
             linkedin: "https://www.linkedin.com/in/varun-rahatgaonkar-448392321",
-            image: "/images/team2025/teMembers/VarunRahatgaonkar.png",
+            image: "/images/team2025/teMembers/VarunRahatgaonkar.webp",
           },
         ],
       },
@@ -647,7 +647,7 @@ const team = [
             email: "2024.akshat.korde@ves.ac.in",
             github: "https://github.com/akshat1456",
             linkedin: "https://www.linkedin.com/in/akshat-korde-9b37a737a/",
-            image: "/images/team2025/seMembers/AkshatKorde.png",
+            image: "/images/team2025/seMembers/AkshatKorde.webp",
           },
           {
             name: "Ashutosh Mishra",
@@ -655,7 +655,7 @@ const team = [
             email: "2024.ashutosh.mishra@ves.ac.in",
             github: "https://github.com/Dev-Am12",
             linkedin: "https://www.linkedin.com/in/ashutosh-mishra-836b50367/",
-            image: "/images/team2025/seMembers/AshutoshMishra.png",
+            image: "/images/team2025/seMembers/AshutoshMishra.webp",
           },
           {
             name: "Atharva Waghmode",
@@ -663,7 +663,7 @@ const team = [
             email: "2024.atharva.waghmode@ves.ac.in",
             github: "https://github.com/wagha-builds",
             linkedin: "https://www.linkedin.com/in/atharva-waghmode-0a7573350/",
-            image: "/images/team2025/seMembers/AtharvaWaghmode.png",
+            image: "/images/team2025/seMembers/AtharvaWaghmode.webp",
           },
           {
             name: "Ayush Lokhande",
@@ -671,7 +671,7 @@ const team = [
             email: "2024.ayush.lokhande@ves.ac.in",
             github: "https://github.com/Ayushpro45",
             linkedin: "https://www.linkedin.com/in/ayush-lokhande-33306433b/",
-            image: "/images/team2025/seMembers/AyushLokhande.png",
+            image: "/images/team2025/seMembers/AyushLokhande.webp",
           },
           {
             name: "Gourish Naik",
@@ -679,7 +679,7 @@ const team = [
             email: "2024.gourish.naik@ves.ac.in",
             github: "https://github.com/gourishnaikk",
             linkedin: "https://www.linkedin.com/in/gourish-naik-876171334/",
-            image: "/images/team2025/seMembers/GourishNaik.png",
+            image: "/images/team2025/seMembers/GourishNaik.webp",
           },
           {
             name: "Japleen Kaur Arora",
@@ -687,7 +687,7 @@ const team = [
             email: "2024.japleen.arora@ves.ac.in",
             github: "https://github.com/2024japleenarora",
             linkedin: "https://www.linkedin.com/in/japleen-kaur-arora-a805aa312/",
-            image: "/images/team2025/seMembers/JapleenKArora.png",
+            image: "/images/team2025/seMembers/JapleenKArora.webp",
           },
           {
             name: "Kirteesh Rakshe",
@@ -695,7 +695,7 @@ const team = [
             email: "2024.kirteesh.rakshe@ves.ac.in",
             github: "https://github.com/kirteexh",
             linkedin: "https://www.linkedin.com/in/kirteesh-r-87617139b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-            image: "/images/team2025/seMembers/KirteeshRakshe.png",
+            image: "/images/team2025/seMembers/KirteeshRakshe.webp",
           },
           {
             name: "Krrish Gupta",
@@ -703,7 +703,7 @@ const team = [
             email: "2024.krrish.gupta@ves.ac.in",
             github: "https://github.com/Krrish-Gupta-18",
             linkedin: "https://www.linkedin.com/in/krrish-gupta-2b7255358/",
-            image: "/images/team2025/seMembers/KrrishGupta.png",
+            image: "/images/team2025/seMembers/KrrishGupta.webp",
           },
           {
             name: "Parth Chavan",
@@ -711,7 +711,7 @@ const team = [
             email: "2024.parth.chavan@ves.ac.in",
             github: "https://github.com/Parth-Chavan-15",
             linkedin: "https://www.linkedin.com/in/parth-chavan-8b9260394/",
-            image: "/images/team2025/seMembers/ParthChavan.png",
+            image: "/images/team2025/seMembers/ParthChavan.webp",
           },
           {
             name: "Parth Khismatrao",
@@ -719,7 +719,7 @@ const team = [
             email: "2024.parth.khismatrao@ves.ac.in",
             github: "https://github.com/smokycoder22",
             linkedin: "https://www.linkedin.com/in/parth-khismatrao-77668b36a/",
-            image: "/images/team2025/seMembers/ParthKhismatrao.png",
+            image: "/images/team2025/seMembers/ParthKhismatrao.webp",
           },
           {
             name: "Rushabh Gupta",
@@ -727,7 +727,7 @@ const team = [
             email: "2024.rushabh.gupta@ves.ac.in",
             github: "https://github.com/RiShBhs-Code",
             linkedin: "https://www.linkedin.com/in/rushabh-gupta-8b0119381/",
-            image: "/images/team2025/seMembers/RushabhGupta.png",
+            image: "/images/team2025/seMembers/RushabhGupta.webp",
           },
           {
             name: "Shivam Mishra",
@@ -735,7 +735,7 @@ const team = [
             email: "2024.shivam.mishra@ves.ac.in",
             github: "https://github.com/Thetwobraincells",
             linkedin: "https://www.linkedin.com/in/shivam-mishra-vesit/",
-            image: "/images/team2025/seMembers/ShivamMishra.png",
+            image: "/images/team2025/seMembers/ShivamMishra.webp",
           },
           {
             name: "Shruti Awasthi",
@@ -743,7 +743,7 @@ const team = [
             email: "2024.shruti.awasthi@ves.ac.in",
             github: "https://github.com/being4440",
             linkedin: "https://www.linkedin.com/in/shruti-awasthi-b6180835a/",
-            image: "/images/team2025/seMembers/ShrutiAwasthi.png",
+            image: "/images/team2025/seMembers/ShrutiAwasthi.webp",
           },
           {
             name: "Soniya Lulla",
@@ -751,7 +751,7 @@ const team = [
             email: "2024.soniya.lulla@ves.ac.in",
             github: "https://github.com/lullasoniya4-dotcom",
             linkedin: "https://www.linkedin.com/in/soniya-lulla-36b072338/",
-            image: "/images/team2025/seMembers/SoniyaLulla.png",
+            image: "/images/team2025/seMembers/SoniyaLulla.webp",
           },
           {
             name: "Sujal Gupta",
@@ -759,7 +759,7 @@ const team = [
             email: "2024.sujal.gupta@ves.ac.in",
             github: "https://github.com/acchasujal",
             linkedin: "https://www.linkedin.com/in/sujal-gupta-78a452326/",
-            image: "/images/team2025/seMembers/SujalGupta.png",
+            image: "/images/team2025/seMembers/SujalGupta.webp",
           },
           {
             name: "Tanaya Pawar",
@@ -767,7 +767,7 @@ const team = [
             email: "2024.tanaya.pawar@ves.ac.in",
             github: "https://github.com/Tana2006",
             linkedin: "https://www.linkedin.com/in/tanaya-pawar-7420aa379/",
-            image: "/images/team2025/seMembers/TanayaPawar.png",
+            image: "/images/team2025/seMembers/TanayaPawar.webp",
           },
           {
             name: "Unmesh Bhangale",
@@ -775,7 +775,7 @@ const team = [
             email: "2024.unmesh.bhangale@ves.ac.in",
             github: "https://github.com/imunmesh",
             linkedin: "https://www.linkedin.com/in/unmesh-bhangale-992995343/",
-            image: "/images/team2025/seMembers/UnmeshBhangale.png",
+            image: "/images/team2025/seMembers/UnmeshBhangale.webp",
           },
         ],
       },
