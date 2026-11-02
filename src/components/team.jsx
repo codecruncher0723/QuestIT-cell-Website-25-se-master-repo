@@ -26,7 +26,11 @@ import team from "@/constants/team";
 const CURRENT_COUNCIL = "Quest IT Council 2026-27";
 
 // Councils shown as the fairy-light polaroid clothesline
-const CLOTHESLINE_COUNCILS = [CURRENT_COUNCIL, "Quest IT Council 2025-26"];
+const CLOTHESLINE_COUNCILS = [
+  CURRENT_COUNCIL,
+  "Quest IT Council 2025-26",
+  "Quest IT Council 2024-25",
+];
 
 // Cards fade and slide up one after another when the dropdown opens
 const card_entrance = (index) => ({
