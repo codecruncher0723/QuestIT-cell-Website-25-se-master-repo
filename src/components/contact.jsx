@@ -69,7 +69,7 @@ const Contact = () => {
               <a
                 href={`tel:${secretary.phone}`}
                 aria-label={`Call ${secretary.name}, ${secretary.role}`}
-                className="mt-4 px-6 py-2 bg-cyan-600 hover:bg-cyan-700 transition duration-200 rounded-xl text-white flex items-center gap-2 text-sm font-medium shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                className="mt-4 px-6 py-2.5 min-h-[44px] bg-cyan-600 hover:bg-cyan-700 transition duration-200 rounded-xl text-white flex items-center gap-2 text-sm font-medium shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 <Phone
                   aria-hidden="true"
