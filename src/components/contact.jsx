@@ -1,8 +1,6 @@
-// Next's Imports
 import Link from "next/link";
 import { Phone } from "lucide-react";
 
-// App's Internal Imports
 import { Vortex } from "@/components/ui/vortex";
 
 const secretaries = [
@@ -39,12 +37,15 @@ const Contact = () => {
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
           <Link
             href="mailto:questit@ves.ac.in"
-            className="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 transition duration-200 rounded-lg text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset]"
+            className="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 transition duration-200 rounded-lg text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           >
             Contact Us
           </Link>
 
-          <Link href="/team" className="px-4 py-2 text-white hover:text-cyan-400 transition duration-200">
+          <Link
+            href="/team"
+            className="px-4 py-2 text-white hover:text-cyan-400 transition duration-200 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+          >
             Meet the Team
           </Link>
         </div>
@@ -54,9 +55,9 @@ const Contact = () => {
         </h3>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-3xl px-4">
-          {secretaries.map((secretary, index) => (
+          {secretaries.map((secretary) => (
             <div
-              key={index}
+              key={secretary.phone}
               className="bg-neutral-900/60 border border-neutral-800 backdrop-blur-md rounded-2xl p-6 flex flex-col items-center justify-center w-full sm:w-72 transition duration-300 hover:border-cyan-500/40"
             >
               <h4 className="text-white text-lg md:text-xl font-bold text-center">
@@ -67,9 +68,13 @@ const Contact = () => {
               </p>
               <a
                 href={`tel:${secretary.phone}`}
-                className="mt-4 px-6 py-2 bg-cyan-600 hover:bg-cyan-700 transition duration-200 rounded-xl text-white flex items-center gap-2 text-sm font-medium shadow-md"
+                aria-label={`Call ${secretary.name}, ${secretary.role}`}
+                className="mt-4 px-6 py-2 bg-cyan-600 hover:bg-cyan-700 transition duration-200 rounded-xl text-white flex items-center gap-2 text-sm font-medium shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
-                <Phone className="w-4 h-4 text-pink-400 fill-pink-400/20" />
+                <Phone
+                  aria-hidden="true"
+                  className="w-4 h-4 text-pink-400 fill-pink-400/20"
+                />
                 <span>{secretary.phone}</span>
               </a>
             </div>
@@ -80,4 +85,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contact;
